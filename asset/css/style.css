@@ -159,6 +159,37 @@
     display: block;
     padding: 10px 20px;
   }
+
+  /* Footer */
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    text-align: center;
+  }
+
+  footer ul.menu {
+    margin: 0;
+    padding: 0;
+  }
+
+  footer ul.menu li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+
+  footer ul.menu li a {
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #282836;
+  }
+
+  footer .copyright {
+    font-weight: 300;
+    font-size: 0.8em;
+    line-height: 3em;
+  }
 }
 
 @media screen and (min-width: 1200px) {
