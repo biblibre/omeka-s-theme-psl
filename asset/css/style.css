@@ -9,7 +9,7 @@
   }
 
   body {
-    background-color: #f8f8f8;
+    background-color: white;
     font-family: "Open Sans", sans-serif;
     margin: 0;
     word-wrap: break-word;
@@ -68,6 +68,80 @@
   ::-moz-placeholder, /* Firefox 19+ */
   :-ms-input-placeholder {
     font-style: italic;
+  }
+
+  /* Header */
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  header .inside > * {
+    display: inline-block;
+    margin: 10px;
+  }
+
+  header .main-menu-small {
+    display: none;
+  }
+
+  header nav li > a:link,
+  header nav li > a:visited,
+  header nav li > a:active {
+    color: #404750;
+  }
+
+  header nav li:hover > a:link,
+  header nav li:hover > a:visited,
+  header nav li:hover > a:active {
+    background-color: #4386e2;
+    color: #ffffff;
+  }
+
+  header nav > ul {
+    margin: 0;
+    padding: 0;
+  }
+
+  header nav > ul > li {
+    display: inline-block;
+    position: relative;
+  }
+
+  header nav > ul > li > a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  header nav li ul {
+    display: none;
+
+    position: absolute;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+
+    border: 1px solid #e3e3e6;
+    background-color: white;
+  }
+
+  header nav li:hover ul {
+    display: block;
+  }
+
+  header nav li ul li {
+    display: block;
+  }
+
+  header nav li ul li a {
+    display: block;
+    padding: 10px 20px;
   }
 }
 
