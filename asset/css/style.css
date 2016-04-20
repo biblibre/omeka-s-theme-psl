@@ -1,0 +1,149 @@
+@media screen {
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    background-color: #f8f8f8;
+    font-family: "Open Sans", sans-serif;
+    margin: 0;
+    word-wrap: break-word;
+  }
+
+  a:link {
+    text-decoration: none;
+    color: #4386e2;
+  }
+
+  a:visited {
+    color: #4386e2;
+  }
+
+  a:active,
+  a:hover {
+    color: #366bb5;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  /* @group ----- Forms ----- */
+  input,
+  textarea,
+  button {
+    font-family: "Open Sans", sans-serif;
+    font-size: 20px;
+    line-height: 30px;
+    margin: 0;
+    vertical-align: top;
+  }
+
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  input[type="url"] {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -moz-border-radius: 0px;
+    -webkit-border-radius: 0px;
+    border-radius: 0px;
+    height: 2.25em;
+    border-color: rgba(0, 0, 0, 0.15);
+    border-width: 0.05em;
+    border-style: solid;
+    padding: -0.05em;
+    padding: 0.375em 1.69492%;
+    margin: 0;
+  }
+
+  ::-webkit-input-placeholder,
+  :-moz-placeholder, /* Firefox 18- */
+  ::-moz-placeholder, /* Firefox 19+ */
+  :-ms-input-placeholder {
+    font-style: italic;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+
+  #container-body {
+    margin: auto;
+    width: 1200px;
+  }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  body {
+    font-size: 15px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 24px;
+  }
+
+  h3 {
+    font-size: 14px;
+  }
+}
+
+@media screen and (min-width: 768px) and (max-width: 992px) {
+  body {
+    font-size: 16px;
+  }
+
+  h1 {
+    font-size: 34px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  h3 {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    font-size: 19px;
+  }
+
+  h1 {
+    font-size: 40px;
+  }
+
+  h2 {
+    font-size: 26px;
+  }
+
+  h3 {
+    font-size: 17px;
+  }
+}
