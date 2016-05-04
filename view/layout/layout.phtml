@@ -20,16 +20,16 @@ $this->trigger('view.layout');
     </head>
 
     <?php echo $this->htmlElement('body'); ?>
-        <div id="container-body">
-            <header>
-                <?php echo $this->themeSetting('header_html'); ?>
-            </header>
+        <header>
+            <?php echo $this->themeSetting('header_html'); ?>
+        </header>
 
+        <main>
             <?php echo $this->content; ?>
+        </main>
 
-            <footer>
-                <?php echo $this->themeSetting('footer_html'); ?>
-            </footer>
-        </div>
+        <footer>
+            <?php echo $this->themeSetting('footer_html'); ?>
+        </footer>
     </body>
 </html>
