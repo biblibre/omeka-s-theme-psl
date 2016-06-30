@@ -1,16 +1,45 @@
-<?php
-    $itemSets = $this->api()->search('item_sets')->getContent();
-?>
 <div id="content" role="main">
-    <h2><?php echo $this->translate('Browse'); ?></h2>
-    <a href="<?php echo $this->url('site/resource', ['controller' => 'item', 'action' => 'browse'], true); ?>"><?php echo $this->translate('Browse all items'); ?></a>
+    <div id="random-item-and-search-form-wrapper">
+        <div id="random-item">
+            <h2>Random item</h2>
+        </div>
+        <div id="search-form">
+            <?php
+                $searchPageId = $this->themeSetting('search_page_id');
+                $searchPage = $this->api()->read('search_pages', $searchPageId)->getContent();
+                echo $this->searchForm($searchPage);
+            ?>
+        </div>
+    </div>
 
+    <?php
+        $itemSets = $this->api()->search('item_sets', [
+            'limit' => 6,
+            'sort_by' => 'created',
+            'sort_order' => 'desc',
+        ])->getContent();
+    ?>
     <?php if (!empty($itemSets)): ?>
-        <h2>Item sets</h2>
-        <ul>
-            <?php foreach ($itemSets as $itemSet): ?>
-                <li><a href="<?php echo $this->cleanUrl($itemSet); ?>"><?php echo $itemSet->displayTitle(); ?></a></li>
-            <?php endforeach; ?>
-        </ul>
+        <div id="collections">
+            <header>
+                <h2>Collections</h2>
+                <?php $collectionsUrl = $this->url('site/resource', [
+                    'controller' => 'item-set',
+                    'action' => 'browse',
+                ], true); ?>
+                <a href="<?php echo $collectionsUrl; ?>">Toutes les collections</a>
+            </header>
+            <main>
+                <?php foreach ($itemSets as $itemSet): ?>
+                    <div class="collection">
+                        <?php $media = $itemSet->primaryMedia(); ?>
+                        <?php if ($media): ?>
+                            <a href="<?php echo $itemSet->url(); ?>"><img src="<?php echo $media->thumbnailUrl('large'); ?>"/></a>
+                        <?php endif; ?>
+                        <a href="<?php echo $this->cleanUrl($itemSet); ?>"><?php echo $itemSet->displayTitle(); ?></a>
+                    </div>
+                <?php endforeach; ?>
+            </main>
+        </div>
     <?php endif; ?>
 </div>

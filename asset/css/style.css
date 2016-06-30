@@ -20,7 +20,7 @@
     min-height: 100vh;
   }
 
-  main {
+  body > main {
     flex-grow: 1;
   }
 
@@ -79,38 +79,49 @@
     font-style: italic;
   }
 
+  .field {
+    display: flex;
+    margin: 1em 0;
+  }
+
+  .field .field-meta {
+    padding-right: 1em;
+    display: flex;
+    align-items: center;
+  }
+
   /* Header */
 
-  header {
+  body > header {
     display: flex;
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
   }
 
-  header .inside > * {
+  body > header .inside > * {
     display: inline-block;
     margin: 10px;
   }
 
-  header .main-menu-small {
+  body > header .main-menu-small {
     display: none;
   }
 
-  header nav li > a:link,
-  header nav li > a:visited,
-  header nav li > a:active {
+  body > header nav li > a:link,
+  body > header nav li > a:visited,
+  body > header nav li > a:active {
     color: #404750;
   }
 
-  header nav li:hover > a:link,
-  header nav li:hover > a:visited,
-  header nav li:hover > a:active {
+  body > header nav li:hover > a:link,
+  body > header nav li:hover > a:visited,
+  body > header nav li:hover > a:active {
     background-color: #4386e2;
     color: #ffffff;
   }
 
-  header nav > ul {
+  body > header nav > ul {
     margin: 0;
     padding: 0;
     display: flex;
@@ -118,12 +129,12 @@
     justify-content: flex-end;
   }
 
-  header nav > ul > li {
+  body > header nav > ul > li {
     display: inline-block;
     position: relative;
   }
 
-  header nav > ul > li > a {
+  body > header nav > ul > li > a {
     display: block;
     padding: 10px 5px 10px 20px;
     font-size: 24px;
@@ -131,7 +142,7 @@
     text-transform: uppercase;
   }
 
-  header nav > ul > li > a::after {
+  body > header nav > ul > li > a::after {
     content: '';
     display: inline-block;
     margin-left: 5px;
@@ -143,11 +154,11 @@
     border-color: transparent transparent #e3e3e6 transparent;
   }
 
-  header nav > ul > li:hover > a::after {
+  body > header nav > ul > li:hover > a::after {
     visibility: hidden;
   }
 
-  header nav li ul {
+  body > header nav li ul {
     display: none;
 
     position: absolute;
@@ -161,21 +172,21 @@
     background-color: white;
   }
 
-  header nav li:hover ul {
+  body > header nav li:hover ul {
     display: block;
   }
 
-  header nav li ul li {
+  body > header nav li ul li {
     display: block;
   }
 
-  header nav li ul li a {
+  body > header nav li ul li a {
     display: block;
     padding: 10px 20px;
   }
 
   /* Footer */
-  footer {
+  body > footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -183,27 +194,64 @@
     text-align: center;
   }
 
-  footer ul.menu {
+  body > footer ul.menu {
     margin: 0;
     padding: 0;
   }
 
-  footer ul.menu li {
+  body > footer ul.menu li {
     display: inline-block;
     margin: 0 10px;
   }
 
-  footer ul.menu li a {
+  body > footer ul.menu li a {
     text-transform: uppercase;
     font-weight: bold;
     color: #282836;
   }
 
-  footer .copyright {
+  body > footer .copyright {
     font-weight: 300;
     font-size: 0.8em;
     line-height: 3em;
   }
+
+    /* Home page */
+
+    #random-item-and-search-form-wrapper {
+        display: flex;
+        justify-content: space-around;
+
+        background-color: #eeeeee;
+        border: 1px solid black;
+        min-height: 560px;
+    }
+
+    #random-item-and-search-form-wrapper > * {
+        flex-basis: 45%;
+    }
+
+    #collections > header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    #collections > main {
+        display: flex;
+    }
+
+    #collections > main > * {
+        flex-basis: 16%;
+        padding: 0 10px;
+    }
+
+    #collections .collection {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-end;
+        align-items: center;
+    }
 }
 
 @media screen and (min-width: 1200px) {
