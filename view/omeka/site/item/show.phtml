@@ -10,14 +10,14 @@
         <?php if (count($itemSets) > 0): ?>
         <h4><?php echo $this->translate('Item Sets'); ?></h4>
         <?php foreach ($item->itemSets() as $itemSet): ?>
-        <div class="value"><a href="<?php echo $escape($this->cleanUrl($itemSet)); ?>"><?php echo $itemSet->displayTitle(); ?></a></div>
+        <div class="value"><a href="<?php echo $escape($this->CleanUrl($itemSet)); ?>"><?php echo $itemSet->displayTitle(); ?></a></div>
         <?php endforeach; ?>
         <?php endif; ?>
     </div>
     <?php if ($item->media()): ?>
     <div class="media-list">
         <?php foreach ($item->media() as $media): ?>
-            <a href="<?php echo $this->cleanUrl($media); ?>" class="media resource">
+            <a href="<?php echo $this->CleanUrl($media); ?>" class="media resource">
                 <img src="<?php echo $escape($media->thumbnailUrl('medium')); ?>" title="<?php echo $escape($media->displayTitle()); ?>">
             </a>
         <?php endforeach; ?>

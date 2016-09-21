@@ -6,6 +6,7 @@
         <div id="search-form">
             <?php
                 $searchPageId = $this->themeSetting('search_page_id');
+
                 $searchPage = $this->api()->read('search_pages', $searchPageId)->getContent();
                 echo $this->searchForm($searchPage);
             ?>
@@ -36,7 +37,7 @@
                         <?php if ($media): ?>
                             <a href="<?php echo $itemSet->url(); ?>"><img src="<?php echo $media->thumbnailUrl('large'); ?>"/></a>
                         <?php endif; ?>
-                        <a href="<?php echo $this->cleanUrl($itemSet); ?>"><?php echo $itemSet->displayTitle(); ?></a>
+                        <a href="<?php echo $this->CleanUrl($itemSet); ?>"><?php echo $itemSet->displayTitle(); ?></a>
                     </div>
                 <?php endforeach; ?>
             </main>
