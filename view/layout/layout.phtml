@@ -22,6 +22,10 @@ $this->trigger('view.layout');
     <?php echo $this->htmlElement('body'); ?>
         <header>
             <?php echo $this->themeSetting('header_html'); ?>
+<div class="show_basket">
+
+          <?php echo $this->showBasketLink("<img src=\"".$this->assetUrl('images/add_basket.png').'"/>'.$this->translate('BASKET')); ?>
+</div>
         </header>
 
         <main>

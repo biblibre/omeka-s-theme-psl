@@ -18,6 +18,7 @@
 
     <?php echo $this->searchFilters(); ?>
     <?php echo $this->pagination(); ?>
+<?php $count=0; ?>
     <ul class="resource-list">
         <?php foreach ($items as $item): ?>
         <li class="item resource">
@@ -28,7 +29,9 @@
                 alt="<?php echo $escape($primaryMedia->mediaType()); ?> thumbnail"
             >
             <?php endif; ?>
-            <h4><a href="<?php echo $this->CleanUrl($item); ?>"><?php echo $item->displayTitle(); ?></a></h4>
+            <h4><a href="<?php echo $this->CleanUrl($item); ?>"><?php echo $item->displayTitle(); ?></a></h4>            <?php $count++; ?>
+            <?php echo $this->divBasketLink($item,$count); ?>
+
             <?php if ($description = $item->displayDescription()): ?>
             <div class="description"><?php echo $description; ?></div>
             <?php endif; ?>
