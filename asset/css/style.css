@@ -38,6 +38,16 @@
       border:none;
       background: none;
   }
+  div.remove_basket {
+      display: block;
+
+      background: url('../images/remove_basket.png') no-repeat;
+      background-size:cover;
+      width: 16px; 
+      height: 16px; /* Height of new image */
+      padding-left: 8px; /* Equal to width of new image */
+
+  }
 
   div.add_basket {
       display: block;
@@ -62,17 +72,6 @@
       margin: 5px;
       float: left;
   }
-  div.remove_basket {
-      display: block;
-
-      background: url('../images/remove_basket.png') no-repeat;
-      background-size:cover;
-      width: 16px; /* Width of new image */
-      heigth: 16px; /* Height of new image */
-      padding-left: 8px; /* Equal to width of new image */
-
-  }
-
   div.remove_basket span,div.add_basket span  {
       display:none;
   }

@@ -38,7 +38,7 @@
         />
     <?php endif; ?>
     <h4><?php echo $resource->link($resource->displayTitle()); ?></h4>
-    <?php echo $this->divBasketLink($resource,$count); ?>
+    <?php echo $this->divBasketLink($resource); ?>
     <?php if ($description = $resource->displayDescription()): ?>
         <div class="description">
             <?php echo $description; ?>
