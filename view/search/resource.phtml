@@ -37,8 +37,10 @@
             alt="<?php echo $escape($primaryMedia->mediaType()); ?> thumbnail"
         />
     <?php endif; ?>
-    <h4><?php echo $resource->link($resource->displayTitle()); ?></h4>
-    <?php echo $this->divBasketLink($resource); ?>
+    <h4>
+        <?php echo $this->updateBasketLink($resource); ?>
+        <?php echo $resource->link($resource->displayTitle()); ?>
+    </h4>
     <?php if ($description = $resource->displayDescription()): ?>
         <div class="description">
             <?php echo $description; ?>

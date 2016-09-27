@@ -7,7 +7,6 @@ $this->headLink()->prependStylesheet($this->assetUrl('css/fonts.css'));
 $this->headLink()->prependStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('js/jquery.js', 'Omeka'));
 $this->headLink()->appendStylesheet($this->assetUrl('css/style.css'));
-$this->trigger('view.layout');
 ?>
 <?php echo $this->doctype(); ?>
 <?php echo $this->htmlElement('html'); ?>
@@ -22,10 +21,9 @@ $this->trigger('view.layout');
     <?php echo $this->htmlElement('body'); ?>
         <header>
             <?php echo $this->themeSetting('header_html'); ?>
-<div class="show_basket">
-
-          <?php echo $this->showBasketLink("<img src=\"".$this->assetUrl('images/add_basket.png').'"/>'.$this->translate('BASKET')); ?>
-</div>
+            <div class="show_basket">
+                <?php echo $this->showBasketLink(); ?>
+            </div>
         </header>
 
         <main>
