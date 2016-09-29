@@ -11,7 +11,7 @@
     <?php if ($item->media()): ?>
         <div class="media-list">
             <?php foreach ($item->media() as $media): ?>
-                <a href="<?php echo $this->CleanUrl($media); ?>" class="media resource">
+                <a href="<?php echo $media->url(); ?>" class="media resource">
                     <img src="<?php echo $escape($media->thumbnailUrl('square')); ?>" title="<?php echo $escape($media->displayTitle()); ?>">
                 </a>
             <?php endforeach; ?>
@@ -24,4 +24,8 @@
             <?php echo $item->displayValues(['viewName' => 'psl/resource-values']); ?>
         </div>
     </div>
+
+    <?php echo $this->partial('psl/toolbox', [
+        'resource' => $item,
+    ]); ?>
 </div>

@@ -6,6 +6,8 @@ $this->headTitle($this->setting('installation_title', 'Omeka S'))->setSeparator(
 $this->headLink()->prependStylesheet($this->assetUrl('css/fonts.css'));
 $this->headLink()->prependStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('js/jquery.js', 'Omeka'));
+
+$this->headScript()->appendFile($this->assetUrl('js/toolbox.js'));
 $this->headLink()->appendStylesheet($this->assetUrl('css/style.css'));
 ?>
 <?php echo $this->doctype(); ?>

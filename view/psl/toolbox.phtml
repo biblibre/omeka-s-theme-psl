@@ -1,0 +1,34 @@
+<div id="psl-toolbox">
+    <ul>
+        <li class="basket"><?php echo $this->updateBasketLink($resource); ?></li>
+        <li class="share">
+            <a href="#psl-toolbox-share"></a>
+        </li>
+        <li class="download">
+            <a href="#psl-toolbox-download"></a>
+        </li>
+    </ul>
+    <div id="psl-toolbox-share">
+        <?php $ark = $this->ark($resource)->getAbsoluteUrl(); ?>
+        <?php if ($ark): ?>
+            <label><?php echo $this->translate('Permalink :'); ?></label>
+            <a href="<?php echo $ark; ?>"><?php echo $ark; ?></a>
+        <?php endif; ?>
+    </div>
+    <div id="psl-toolbox-download">
+        <?php
+            if ($resource->resourceName() === 'media') {
+                $media = [$resource];
+            } else {
+                $media = $resource->media();
+            }
+        ?>
+        <?php if (!empty($media)): ?>
+            <label><?php echo $this->translate('Original files :'); ?></label>
+            <?php foreach ($media as $medium): ?>
+                <a href="<?php echo $medium->originalUrl(); ?>"><?php echo $medium->source(); ?></a>
+            <?php endforeach; ?>
+        <?php endif; ?>
+    </div>
+</div>
+<?php $this->headScript()->appendFile($this->assetUrl('js/toolbox.js')); ?>

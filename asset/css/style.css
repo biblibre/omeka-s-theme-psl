@@ -904,6 +904,93 @@
     #basket-view-type-list img {
         width: 49px;
     }
+
+    #psl-toolbox {
+        position: fixed;
+        left: 0;
+        top: 200px;
+        border: 1px solid rgb(188, 188, 188);
+        display: flex;
+        background-color: white;
+    }
+
+    #psl-toolbox * {
+        position: static;
+    }
+
+    #psl-toolbox ul {
+        margin: 0;
+        padding: 0;
+    }
+
+    #psl-toolbox ul li {
+        display: block;
+    }
+
+    #psl-toolbox ul li > * {
+        display: block;
+        padding: 20px 10px;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    #psl-toolbox ul li > *::before {
+        content: '';
+        display: block;
+        width: 28px;
+        height: 31px;
+        background-size: contain;
+        background-repeat: no-repeat;
+    }
+
+    #psl-toolbox ul li.basket > button::before {
+        background-image: url(../images/pin-blue.svg);
+    }
+
+    #psl-toolbox ul li.basket > button.basket-delete::before {
+        background-image: url(../images/pin-full-blue.svg);
+    }
+
+    #psl-toolbox ul li.share > a::before {
+        background-image: url(../images/share-blue.svg);
+    }
+
+    #psl-toolbox ul li.download > a::before {
+        background-image: url(../images/download.svg);
+    }
+
+    #psl-toolbox ul li:hover > * {
+        background-color: rgb(40, 83, 141);
+    }
+
+    #psl-toolbox ul li.basket:hover > button::before {
+        background-image: url(../images/pin-white.svg);
+    }
+
+    #psl-toolbox ul li.basket:hover > button.basket-delete::before {
+        background-image: url(../images/pin-full-white.svg);
+    }
+
+    #psl-toolbox ul li.share:hover > a::before {
+        background-image: url(../images/share-white.svg);
+    }
+
+    #psl-toolbox ul li.download:hover > a::before {
+        background-image: url(../images/download-white.svg);
+    }
+
+    #psl-toolbox > div {
+        display: none;
+        border-left: 1px solid rgb(188, 188, 188);
+        padding: 0.5em;
+    }
+
+    #psl-toolbox label {
+        display: block;
+        font-weight: 600;
+        color: rgb(40, 83, 141);
+    }
 }
 
 @media screen and (min-width: 1200px) {
