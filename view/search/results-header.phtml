@@ -13,6 +13,7 @@
                 $labels[$field] = $label;
             }
         ?>
+        <span><?php echo $this->translate('Sorting mode:'); ?></span>
         <?php foreach($links as $field => $link): ?>
             <div class="sort-field">
                 <span class="sort-label"><?php echo $labels[$field]; ?></span>

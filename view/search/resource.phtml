@@ -28,22 +28,56 @@
 ?>
 
 <?php $escape = $this->plugin('escapeHtml'); ?>
+<?php $resourceName = $resource->resourceName(); ?>
+<?php
+    if ($resourceName === 'item_sets') {
+        $q = [
+            'itemSet' => [
+                'ids' => [$resource->id()],
+            ],
+        ];
+        $resourceUrl = $this->url('search-page-' . $this->themeSetting('search_page_id'), [], ['query' => $q], true);
+    } else {
+        $resourceUrl = $resource->url();
+    }
+?>
 
-<<?php echo $tag; ?> class="<?php echo $resource->resourceName(); ?> resource">
-    <?php if (method_exists($resource, 'primaryMedia') && $primaryMedia = $resource->primaryMedia()): ?>
-        <img
-            src="<?php echo $escape($primaryMedia->thumbnailUrl('medium')); ?>"
-            title="<?php echo $escape($primaryMedia->displayTitle()); ?>"
-            alt="<?php echo $escape($primaryMedia->mediaType()); ?> thumbnail"
-        />
-    <?php endif; ?>
-    <h4>
-        <?php echo $this->updateBasketLink($resource); ?>
-        <?php echo $resource->link($resource->displayTitle()); ?>
-    </h4>
-    <?php if ($description = $resource->displayDescription()): ?>
-        <div class="description">
-            <?php echo $description; ?>
-        </div>
-    <?php endif; ?>
-</<?php echo $tag ?>>
+<div class="<?php echo $resourceName; ?> resource">
+    <div class="resource-thumbnail">
+        <?php
+            if ($resourceName === 'media') {
+                $media = $resource;
+            } else {
+                $media = $resource->primaryMedia();
+            }
+        ?>
+
+        <?php if ($media): ?>
+            <a href="<?php echo $this->escapeHtml($resourceUrl); ?>">
+                <img
+                    src="<?php echo $escape($media->thumbnailUrl('square')); ?>"
+                    title="<?php echo $escape($media->displayTitle()); ?>"
+                    alt="<?php echo $escape($media->mediaType()); ?> thumbnail"
+                />
+            </a>
+        <?php endif; ?>
+    </div>
+    <div class="resource-metadata">
+        <h4>
+            <?php if ($resourceName === 'items' || $resourceName === 'media'): ?>
+                <?php echo $this->updateBasketLink($resource); ?>
+            <?php endif; ?>
+            <a href="<?php echo $this->escapeHtml($resourceUrl); ?>"><?php echo $resource->displayTitle(); ?></a>
+        </h4>
+        <?php if ($creator = $resource->value('dcterms:creator')): ?>
+            <div class="creator">
+                <?php echo $creator; ?>
+            </div>
+        <?php endif; ?>
+        <?php if ($description = $resource->displayDescription()): ?>
+            <div class="description">
+                <?php echo $description; ?>
+            </div>
+        <?php endif; ?>
+    </div>
+</div>

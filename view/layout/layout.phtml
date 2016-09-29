@@ -21,8 +21,15 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/style.css'));
     <?php echo $this->htmlElement('body'); ?>
         <header>
             <?php echo $this->themeSetting('header_html'); ?>
-            <div class="show_basket">
-                <?php echo $this->showBasketLink(); ?>
+
+            <div class="user-links">
+                <?php $identity = $this->identity(); ?>
+                <?php if ($identity): ?>
+                    <?php echo $this->showBasketLink(); ?>
+                    <a href="<?php echo $this->escapeHtml($this->url('logout')); ?>"><?php echo $this->translate('Logout'); ?></a>
+                <?php else: ?>
+                    <a href="<?php echo $this->escapeHtml($this->url('login', [], ['query' => ['redirect' => $this->url(null, [], true)]])); ?>"><?php echo $this->translate('Login'); ?></a>
+                <?php endif; ?>
             </div>
         </header>
 

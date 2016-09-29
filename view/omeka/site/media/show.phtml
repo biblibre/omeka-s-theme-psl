@@ -1,0 +1,18 @@
+<?php $this->htmlElement('body')->appendAttribute('class', 'media resource show'); ?>
+
+<div id="content" role="main">
+    <?php echo $this->SearchForm(); ?>
+
+    <?php echo $this->pageTitle($media->item()->displayTitle() . ' : ' . $media->source(), 2); ?>
+
+    <?php echo $media->render(); ?>
+
+    <?php if (!empty($media->values())): ?>
+        <div class="resource-metadata-wrapper">
+            <div class="resource-metadata">
+                <h2><?php echo $this->translate('Metadata'); ?></h2>
+                <?php echo $media->displayValues(['viewName' => 'psl/resource-values']); ?>
+            </div>
+        </div>
+    <?php endif; ?>
+</div>

@@ -1,12 +1,7 @@
 <div id="content" role="main">
     <div id="search-form-wrapper">
         <div id="search-form">
-            <?php
-                $searchPageId = $this->themeSetting('search_page_id');
-
-                $searchPage = $this->api()->read('search_pages', $searchPageId)->getContent();
-                echo $this->searchForm($searchPage);
-            ?>
+            <?php echo $this->SearchForm(); ?>
         </div>
     </div>
 
