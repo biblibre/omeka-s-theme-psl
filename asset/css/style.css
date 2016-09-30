@@ -995,6 +995,10 @@
         font-weight: 600;
         color: rgb(40, 83, 141);
     }
+
+    #psl-toolbox-download a {
+        display: block;
+    }
 }
 
 @media screen and (min-width: 1200px) {
