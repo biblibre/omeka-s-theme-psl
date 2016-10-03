@@ -732,12 +732,11 @@
     }
 
     .resource-list .resource h4 {
-        display: flex;
-        font-size: 125%;
+        font-size: 110%;
     }
 
     .resource-list .resource h4 button.basket-update {
-        margin-right: 1em;
+        margin-right: 0.25em;
     }
 
     .resource-list .resource .creator {
@@ -753,6 +752,12 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+        padding-left: 0.5em;
+        padding-right: 0.5em;
+    }
+
+    .resource-list.grid .resource h4 {
+        text-align: center;
     }
 
     .resource-list.list .resource {
