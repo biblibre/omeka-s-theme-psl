@@ -3,7 +3,10 @@
 <div id="content" role="main">
     <?php echo $this->SearchForm(); ?>
 
-    <?php echo $this->pageTitle($media->item()->displayTitle() . ' : ' . $media->source(), 2); ?>
+    <?php
+        $pageTitle = $media->item()->displayTitle() . ' : ' . $media->value('dcterms:title', ['type' => 'literal', 'default' => $media->filename()]);
+        echo $this->pageTitle($pageTitle, 2);
+    ?>
 
     <?php echo $media->render(); ?>
 
