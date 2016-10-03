@@ -9,12 +9,14 @@
     <?php echo $this->universalViewer($item); ?>
 
     <?php if ($item->media()): ?>
-        <div class="media-list">
-            <?php foreach ($item->media() as $media): ?>
-                <a href="<?php echo $media->url(); ?>" class="media resource">
-                    <img src="<?php echo $escape($media->thumbnailUrl('square')); ?>" title="<?php echo $escape($media->displayTitle()); ?>">
-                </a>
-            <?php endforeach; ?>
+        <div class="media-list-wrapper">
+            <div class="media-list">
+                <?php foreach ($item->media() as $media): ?>
+                    <a href="<?php echo $media->url(); ?>" class="media resource">
+                        <img src="<?php echo $escape($media->thumbnailUrl('square')); ?>" title="<?php echo $escape($media->displayTitle()); ?>">
+                    </a>
+                <?php endforeach; ?>
+            </div>
         </div>
     <?php endif; ?>
 
@@ -29,3 +31,28 @@
         'resource' => $item,
     ]); ?>
 </div>
+
+<script>
+    $(document).ready(function() {
+        var mediaList = $('div.media-list');
+        if (mediaList.length) {
+            $('<a>')
+                .addClass('media-list-toggle')
+                .html(<?php echo json_encode($this->translate('Files access')); ?>)
+                .on('click', function(e) {
+                    e.preventDefault();
+                    if (mediaList.is(':visible')) {
+                        mediaList.hide();
+                        $(this).removeClass('media-list-visible');
+                        $(this).addClass('media-list-hidden');
+                    } else {
+                        mediaList.show();
+                        $(this).removeClass('media-list-hidden');
+                        $(this).addClass('media-list-visible');
+                    }
+                })
+                .insertBefore(mediaList)
+                .trigger('click');
+        }
+    });
+</script>
