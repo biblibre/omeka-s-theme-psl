@@ -4,9 +4,11 @@
         <li class="share">
             <a href="#psl-toolbox-share"></a>
         </li>
-        <li class="download">
-            <a href="#psl-toolbox-download"></a>
-        </li>
+        <?php if ($resource->resourceName() === 'media'): ?>
+            <li class="download">
+                <a href="#psl-toolbox-download"></a>
+            </li>
+        <?php endif; ?>
     </ul>
     <div id="psl-toolbox-share">
         <?php $ark = $this->ark($resource)->getAbsoluteUrl(); ?>
@@ -15,20 +17,11 @@
             <a href="<?php echo $ark; ?>"><?php echo $ark; ?></a>
         <?php endif; ?>
     </div>
-    <div id="psl-toolbox-download">
-        <?php
-            if ($resource->resourceName() === 'media') {
-                $media = [$resource];
-            } else {
-                $media = $resource->media();
-            }
-        ?>
-        <?php if (!empty($media)): ?>
-            <label><?php echo $this->translate('Original files :'); ?></label>
-            <?php foreach ($media as $medium): ?>
-                <a href="<?php echo $medium->originalUrl(); ?>"><?php echo $medium->source(); ?></a>
-            <?php endforeach; ?>
-        <?php endif; ?>
-    </div>
+    <?php if ($resource->resourceName() === 'media'): ?>
+        <div id="psl-toolbox-download">
+            <label><?php echo $this->translate('Original file :'); ?></label>
+            <a href="<?php echo $resource->originalUrl(); ?>"><?php echo $resource->filename(); ?></a>
+        </div>
+    <?php endif; ?>
 </div>
 <?php $this->headScript()->appendFile($this->assetUrl('js/toolbox.js')); ?>
