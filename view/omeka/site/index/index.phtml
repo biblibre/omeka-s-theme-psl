@@ -1,4 +1,23 @@
 <div id="content" role="main">
+    <?php
+        $frontPageItemSetId = $this->themeSetting('front_page_item_set_id');
+        if ($frontPageItemSetId) {
+            $items = $this->api()->search('items', [
+                'item_set_id' => $frontPageItemSetId,
+            ])->getContent();
+            $media = [];
+            foreach ($items as $item) {
+                $media = array_merge($media, $item->media());
+            }
+            $index = rand(0, count($media) - 1);
+            $url = $media[$index]->originalUrl();
+            $this->headStyle()->appendStyle('
+                #search-form-wrapper {
+                    background-image: url(' . $url . ');
+                }
+            ');
+        }
+    ?>
     <div id="search-form-wrapper">
         <div id="search-form">
             <?php echo $this->SearchForm(); ?>
