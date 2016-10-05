@@ -1,8 +1,8 @@
 <?php foreach ($itemSets as $itemSet): ?>
     <?php
-        $itemSetTitle = $itemSet->displayTitle();
-        if (strlen($itemSetTitle) > 25) {
-            $itemSetTitle = substr_replace($itemSetTitle, '…', 25);
+        $itemSetTitle = $itemSet->value('dcterms:alternative', ['type' => 'literal']);
+        if (!isset($itemSetTitle)) {
+            $itemSetTitle = $itemSet->displayTitle();
         }
     ?>
     <div class="collection">

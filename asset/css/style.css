@@ -353,7 +353,7 @@
     #collections .collection .collection-title > div {
         background-color: black;
         padding: 15px 15px 10px 15px;
-        min-height: 85px;
+        height: 85px;
     }
     #collections .collection .collection-title span {
         display: block;
