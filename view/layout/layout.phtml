@@ -35,6 +35,15 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/style.css'));
             </div>
         </header>
 
+        <nav role="navigation" class="breadcrumbs">
+            <a href="<?php echo $this->url('site', [], true); ?>"><?php echo $this->translate('Home'); ?></a>
+            <?php $titleParts = $this->headTitle(); ?>
+            <?php if (count($titleParts) > 1): ?>
+                »
+                <?php echo $titleParts[0]; ?>
+            <?php endif; ?>
+        </nav>
+
         <main>
             <?php echo $this->content; ?>
         </main>
