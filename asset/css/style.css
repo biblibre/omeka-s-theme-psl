@@ -720,6 +720,10 @@
         flex-basis: 33%;
     }
 
+    .resource-list.grid .resource {
+        margin-bottom: 2em;
+    }
+
     .resource-list .resource .resource-thumbnail {
         height: 200px;
         width: 200px;
@@ -727,12 +731,20 @@
         flex-shrink: 0;
     }
 
-    .resource-list .resource .resource-metadata > div {
+    .resource-list.list .resource .resource-metadata > div {
         margin-top: 1em;
+    }
+    .resource-list.grid .resource .resource-metadata > div {
+        text-align: center;
     }
 
     .resource-list .resource h4 {
         font-size: 110%;
+    }
+
+    .resource-list.grid .resource h4 {
+        margin: 0;
+        font-weight: normal;
     }
 
     .resource-list .resource h4 button.basket-update {

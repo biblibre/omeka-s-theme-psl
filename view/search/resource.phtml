@@ -69,6 +69,11 @@
             <?php endif; ?>
             <a href="<?php echo $this->escapeHtml($resourceUrl); ?>"><?php echo $resource->displayTitle(); ?></a>
         </h4>
+        <?php if ($resourceName === 'item_sets'): ?>
+            <div class="items-count">
+                <?php echo sprintf($this->translate('%s items'), $resource->itemCount()); ?>
+            </div>
+        <?php endif; ?>
         <?php if ($creator = $resource->value('dcterms:creator')): ?>
             <div class="creator">
                 <?php echo $creator; ?>
