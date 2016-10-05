@@ -762,7 +762,7 @@
     }
 
     .resource-list.list .resource .resource-metadata > div {
-        margin-top: 1em;
+        margin-top: 0.5em;
     }
     .resource-list.grid .resource .resource-metadata > div {
         text-align: center;
@@ -807,9 +807,13 @@
         display: flex;
     }
 
-    .resource-list.grid .resource .creator,
-    .resource-list.grid .resource .description {
+    .resource-list.grid .resource-metadata > div {
         display: none;
+    }
+
+    .resource-list.grid .resource .items-count,
+    .resource-list.grid .resource .dcterms-created {
+        display: block;
     }
 
     .resource-list.list .resource .resource-thumbnail {
