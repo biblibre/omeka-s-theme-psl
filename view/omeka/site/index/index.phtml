@@ -9,13 +9,15 @@
             foreach ($items as $item) {
                 $media = array_merge($media, $item->media());
             }
-            $index = rand(0, count($media) - 1);
-            $url = $media[$index]->originalUrl();
-            $this->headStyle()->appendStyle('
-                #search-form-wrapper {
-                    background-image: url(' . $url . ');
-                }
-            ');
+            if (count($media)) {
+                $index = rand(0, count($media) - 1);
+                $url = $media[$index]->originalUrl();
+                $this->headStyle()->appendStyle('
+                    #search-form-wrapper {
+                        background-image: url(' . $url . ');
+                    }
+                ');
+            }
         }
     ?>
     <div id="search-form-wrapper">
