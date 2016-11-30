@@ -22,7 +22,7 @@
 
     <div class="resource-metadata-wrapper">
         <div class="resource-metadata">
-            <h2><?php echo $this->translate('Metadata'); ?></h2>
+            <h2>Métadonnées</h2>
             <?php echo $item->displayValues(['viewName' => 'psl/resource-values']); ?>
         </div>
     </div>
@@ -38,7 +38,7 @@
         if (mediaList.length) {
             $('<a>')
                 .addClass('media-list-toggle')
-                .html(<?php echo json_encode($this->translate('Files access')); ?>)
+                .html(<?php echo json_encode('Accès aux fichiers'); ?>)
                 .on('click', function(e) {
                     e.preventDefault();
                     if (mediaList.is(':visible')) {

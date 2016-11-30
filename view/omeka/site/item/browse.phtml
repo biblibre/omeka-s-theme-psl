@@ -7,13 +7,13 @@
 <div id="content" role="main">
     <?php if (isset($itemSet)): ?>
         <?php echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
-        <h3><?php echo $this->translate('Item Set'); ?></h3>
+        <h3>Collections</h3>
         <div class="metadata">
             <?php echo $itemSet->displayValues(); ?>
         </div>
-        <?php echo $this->pageTitle($this->translate('Items'), 3); ?>
+        <?php echo $this->pageTitle('Contenus', 3); ?>
     <?php else: ?>
-        <?php echo $this->pageTitle($this->translate('Items'), 2); ?>
+        <?php echo $this->pageTitle('Contenus', 2); ?>
     <?php endif; ?>
 
     <?php echo $this->searchFilters(); ?>

@@ -27,26 +27,26 @@
  */
 ?>
 
-<?php $this->pageTitle($this->translate('Basket')); ?>
+<?php $this->pageTitle('Panier'); ?>
 
 <div id="content" role="main">
     <?php echo $this->SearchForm(); ?>
 
     <div class="basket-header">
-        <h2><?php echo $this->translate('My basket'); ?></h2>
+        <h2>Panier</h2>
 
         <div class="basket-sort">
-            <span><?php echo $this->translate('Sorting mode'); ?></span>
+            <span>Mode de tri</span>
             <?php echo $this->partial('psl/basket-sort-field', [
-                'title' => $this->translate('Title'),
+                'title' => 'Titre',
                 'sort_by' => 'dcterms:title',
             ]); ?>
             <?php echo $this->partial('psl/basket-sort-field', [
-                'title' => $this->translate('Author'),
+                'title' => 'Auteur',
                 'sort_by' => 'dcterms:creator',
             ]); ?>
             <?php echo $this->partial('psl/basket-sort-field', [
-                'title' => $this->translate('Date'),
+                'title' => 'Date',
                 'sort_by' => 'dcterms:date',
             ]); ?>
         </div>
@@ -68,7 +68,7 @@
     ?>
 
     <?php if (!empty($items)): ?>
-        <h3><?php echo count($items) . ' ' . $this->translate('items'); ?></h3>
+        <h3><?php echo count($items) == 1 ? '1 contenu' : sprintf('%s contenus', count($items)); ?></h3>
         <div class="resource-list">
             <?php foreach ($items as $item): ?>
                 <?php echo $this->partial('search/resource', ['resource' => $item]); ?>
@@ -77,7 +77,7 @@
     <?php endif; ?>
 
     <?php if (!empty($media)): ?>
-        <h3><?php echo count($media) . ' ' . $this->translate('files'); ?></h3>
+        <h3><?php echo count($media) == 1 ? '1 fichier' : sprintf('%s fichiers', count($media)); ?></h3>
         <div class="resource-list">
             <?php foreach ($media as $medium): ?>
                 <?php echo $this->partial('search/resource', ['resource' => $medium]); ?>

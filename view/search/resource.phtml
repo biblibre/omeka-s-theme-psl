@@ -71,18 +71,18 @@
         </h4>
         <?php if ($resourceName === 'item_sets'): ?>
             <div class="items-count">
-                <?php echo sprintf($this->translate('%s items'), $resource->itemCount()); ?>
+                <?php echo $resource->itemCount() == 1 ? '1 contenu' : sprintf('%s contenus', $resource->itemCount()); ?>
             </div>
         <?php endif; ?>
         <?php
             $properties = [
-                'dcterms:creator' => $this->translate('Creator'),
-                'dcterms:publisher' => $this->translate('Publisher'),
-                'dcterms:created' => $this->translate('Date Created'),
-                'dcterms:type' => $this->translate('Type'),
-                'dcterms:source' => $this->translate('Source'),
-                'dcterms:subject' => $this->translate('Subject'),
-                'dcterms:identifier' => $this->translate('Identifier'),
+                'dcterms:creator' => 'Créateur',
+                'dcterms:publisher' => 'Éditeur',
+                'dcterms:created' => 'Date de création',
+                'dcterms:type' => 'Type',
+                'dcterms:source' => 'Source',
+                'dcterms:subject' => 'Sujet',
+                'dcterms:identifier' => 'Identifiant',
             ];
         ?>
         <?php foreach ($properties as $term => $label): ?>

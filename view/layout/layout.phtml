@@ -28,15 +28,15 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/style.css'));
                 <?php $identity = $this->identity(); ?>
                 <?php if ($identity): ?>
                     <?php echo $this->showBasketLink(); ?>
-                    <a href="<?php echo $this->escapeHtml($this->url('logout')); ?>"><?php echo $this->translate('Logout'); ?></a>
+                    <a href="<?php echo $this->escapeHtml($this->url('logout')); ?>">Déconnexion</a>
                 <?php else: ?>
-                    <a href="<?php echo $this->escapeHtml($this->url('login', [], ['query' => ['redirect' => $this->url(null, [], true)]])); ?>"><?php echo $this->translate('Login'); ?></a>
+                    <a href="<?php echo $this->escapeHtml($this->url('login', [], ['query' => ['redirect' => $this->url(null, [], true)]])); ?>">Connexion</a>
                 <?php endif; ?>
             </div>
         </header>
 
         <nav role="navigation" class="breadcrumbs">
-            <a href="<?php echo $this->url('site', [], true); ?>"><?php echo $this->translate('Home'); ?></a>
+            <a href="<?php echo $this->url('site', [], true); ?>">Accueil</a>
             <?php $titleParts = $this->headTitle(); ?>
             <?php if (count($titleParts) > 1): ?>
                 »

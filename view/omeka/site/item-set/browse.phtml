@@ -2,7 +2,7 @@
 <?php $this->htmlElement('body')->appendAttribute('class', 'item-set resource browse'); ?>
 
 <div id="content" role="main">
-    <?php echo $this->pageTitle($this->translate('Collections'), 2); ?>
+    <?php echo $this->pageTitle('Collections', 2); ?>
 
     <?php
         $itemSets = $this->api()->search('item_sets', [
