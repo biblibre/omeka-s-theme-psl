@@ -38,7 +38,15 @@ $labelInfo = $this->setting('property_label_information');
                     <?php if ($language = $value->lang()): ?>
                     <span class="language"><?php echo $language; ?></span>
                     <?php endif; ?>
-                    <?php echo $value->asHtml(); ?>
+                    <?php
+                    $term = $propertyData['property']->term();
+                    if ($term == 'dcterms:identifier' && 0 === strpos($value, 'ark:/')) {
+                        $url = $this->ark()->getAbsoluteUrl($value->resource());
+                        echo $this->hyperlink($value, $url);
+                    } else {
+                        echo $value->asHtml();
+                    }
+                    ?>
                 </div>
             <?php endforeach; ?>
         </div>
