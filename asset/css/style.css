@@ -658,9 +658,23 @@
         display: block;
     }
 
-    #search-view-type-grid img,
-    #search-view-type-list img {
+    .search-view-type {
+        display: inline-block;
+        margin-left: 10px;
+    }
+
+    .search-view-type:last-child {
+        margin-right: 1px;
+    }
+
+    .search-view-type img {
         width: 49px;
+        background-color: #687d9a;
+        display: block;
+    }
+
+    .search-view-type.active img {
+      background-color: #53647b;
     }
 
     aside.search-sidebar {
@@ -980,11 +994,6 @@
 
     .basket-sort .sort-direction.sort-active {
         display: block;
-    }
-
-    #basket-view-type-grid img,
-    #basket-view-type-list img {
-        width: 49px;
     }
 
     #psl-toolbox {
