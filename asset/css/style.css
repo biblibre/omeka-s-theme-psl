@@ -478,7 +478,6 @@
         background:url(../images/plus.svg);
         background-repeat: no-repeat;
         background-position: center center;
-        background-size: 18px 18px;
     }
     ul.psl-tabs li.psl-tab-text i::before {
         content: '';
