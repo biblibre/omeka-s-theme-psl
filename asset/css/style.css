@@ -1,7 +1,6 @@
 @media screen {
   * {
     box-sizing: border-box;
-    position: relative;
   }
 
   html {
@@ -334,6 +333,7 @@
     }
 
     #collections .collection > a {
+        position: relative;
         display: inline-block;
         height: 280px;
         width: 100%;
