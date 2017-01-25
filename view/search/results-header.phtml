@@ -36,7 +36,7 @@
                         .find('.sort-direction')
                         .not('.sort-active')
                         .first();
-                    if (direction) {
+                    if (direction.length) {
                         Search.sortBy(direction.attr('data-name'));
                     }
                 });
