@@ -6,9 +6,9 @@
 
     <?php echo $this->pageTitle($item->displayTitle(), 2); ?>
 
-    <?php echo $this->universalViewer($item); ?>
-
     <?php if ($item->media()): ?>
+        <?php echo $this->universalViewer($item); ?>
+
         <div class="media-list-wrapper">
             <div class="media-list">
                 <?php foreach ($item->media() as $media): ?>
