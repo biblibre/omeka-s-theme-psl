@@ -38,7 +38,7 @@
         ];
         $resourceUrl = $this->url('search-page-' . $this->themeSetting('search_page_id'), [], ['query' => $q], true);
     } else {
-        $resourceUrl = $resource->url();
+        $resourceUrl = $this->ResourceUrl($resource);
     }
 ?>
 
