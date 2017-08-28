@@ -26,12 +26,13 @@
 
   a:link {
     text-decoration: none;
-    color: black;
-  }
+    color: #4386e2;
+    font-weight: bold;
+    }
 
   a:visited {
-    color: black;
-  }
+    color: #4386e2;
+      }
 
   button.update_basket  {
       border:none;
@@ -47,6 +48,7 @@
       padding-left: 8px; /* Equal to width of new image */
 
   }
+
 
     .basket-update {
         line-height: 16px;
@@ -194,8 +196,8 @@
 
   body > header nav > ul > li > a {
     display: block;
-    padding: 10px 5px 10px 20px;
-    font-size: 24px;
+    padding: 5px 5px 5px 10px;
+    font-size: 22px;
     font-weight: bold;
     text-transform: uppercase;
   }
@@ -240,7 +242,7 @@
 
   body > header nav li ul li a {
     display: block;
-    padding: 10px 20px;
+    padding: 7px 7px;
   }
 
   nav.breadcrumbs {
@@ -288,7 +290,7 @@
         background-size: cover;
         background-position: 0 32px;
         background-repeat: no-repeat;
-        padding: 0 20px;
+        /*padding: 0 20px;*/
 
         min-height: 560px;
     }
@@ -296,6 +298,7 @@
     #psl-search-form-wrapper .psl-new-search {
         background-color: rgb(228,73,17);
         color: white;
+		margin-top: 55px;
     }
 
     #collections > header {
@@ -343,7 +346,7 @@
     }
 
     #collections .collection .collection-title {
-        width: 50%;
+        width: 60%;
         position: absolute;
         bottom: -40px;
         right: 0;
@@ -351,21 +354,22 @@
     #collections .collection .collection-title::after {
         content: '';
         display: block;
-        border-right: 140px solid transparent;
+        border-right: 169px solid transparent;
         border-top: 40px solid black;
     }
     #collections .collection .collection-title > div {
         background-color: black;
-        padding: 15px 15px 10px 15px;
+        padding: 12px 12px 10px 12px;
         height: 85px;
     }
     #collections .collection .collection-title span {
         display: block;
         height: 100%;
         overflow: hidden;
-        text-transform: uppercase;
+        /*text-transform: uppercase;*/
         color: white;
-        font-size: 14px;
+        font-size: 13px;
+		font-weight: bold;
     }
 
     #collections .collection:nth-child(8n+1) .collection-title > div {
@@ -727,6 +731,7 @@
 
     .search-facet-items a {
         color: rgb(65, 71, 80);
+		font-weight: normal;
     }
 
     .search-facet-item a::before {
@@ -782,7 +787,7 @@
     }
 
     .resource-list .resource h4 {
-        font-size: 110%;
+     /*font-size: 110%;*/
     }
 
     .resource-list.grid .resource h4 {
@@ -898,14 +903,16 @@
     }
 
     .resource-metadata-wrapper {
-        display: inline-block;
-        width: 720px;
+       /*display: inline-block;*/
+       /* width: 600px;*/
+	   float: right;
+	   width: 46%;
     }
 
     .resource-metadata-wrapper::after {
         content: '';
         display: block;
-        border-right: 720px solid transparent;
+        border-right: 564px solid transparent;
         border-top: 150px solid rgb(231, 239, 250);
     }
 
@@ -913,7 +920,7 @@
         background-color: rgb(231, 239, 250);
         background-image: url(../images/metadata-corner.svg);
         background-repeat: no-repeat;
-        padding: 2em 3em 0 3em;
+        padding: 2em 1em 0 1em;
     }
 
     .resource-metadata-wrapper .resource-metadata h2,
@@ -923,16 +930,20 @@
     }
 
     .resource-metadata-wrapper .resource-metadata .property {
-        margin-top: 1em;
+        /*margin-top: 1em;*/
         display: flex;
     }
 
     .resource-metadata-wrapper .resource-metadata .property h4 {
-        margin-right: 2em;
+        /*margin-right: 2em;*/
+		width: 23%;
+		min-width: 23%;
+		text-transform: uppercase;
     }
 
     .resource-metadata-wrapper .resource-metadata .property .value {
         margin-bottom: 1em;
+		margin-left: 1em;
     }
 
     .basket-header {
@@ -1089,26 +1100,7 @@
 
 @media screen and (min-width: 1200px) {
   body {
-    font-size: 15px;
-  }
-
-  h1 {
-    font-size: 34px;
-  }
-
-  h2 {
-    font-size: 26px;
-  }
-
-  h3 {
-    font-size: 16px;
-  }
-
-}
-
-@media screen and (min-width: 992px) and (max-width: 1200px) {
-  body {
-    font-size: 15px;
+    font-size: 13px;
   }
 
   h1 {
@@ -1116,46 +1108,68 @@
   }
 
   h2 {
-    font-size: 24px;
+    font-size: 21px;
   }
 
   h3 {
-    font-size: 14px;
+    font-size: 13px;
+  }
+
+}
+
+@media screen and (min-width: 992px) and (max-width: 1200px) {
+  body {
+    font-size: 13px;
+  }
+
+  h1 {
+    font-size: 30px;
+  }
+
+  h2 {
+    font-size: 241x;
+  }
+
+  h3 {
+    font-size: 13px;
   }
 }
 
 @media screen and (min-width: 768px) and (max-width: 992px) {
   body {
-    font-size: 16px;
+    font-size: 12px;
   }
 
   h1 {
-    font-size: 34px;
+    font-size: 27px;
   }
 
   h2 {
-    font-size: 26px;
+    font-size: 19px;
   }
 
   h3 {
-    font-size: 16px;
+    font-size: 11px;
   }
 }
 
 @media screen and (max-width: 768px) {
   body {
-    font-size: 19px;
+    font-size: 13px;
   }
 
   h1 {
-    font-size: 40px;
+    font-size: 30px;
   }
 
   h2 {
-    font-size: 26px;
+    font-size: 21px;
   }
 
   h3 {
-    font-size: 17px;
+    font-size: 13px;
   }
 }
+/* classes PSL*/
+div.psl_item {overflow:hidden; width: 100%;}
+div.psl_uv {width: 53%; float:left;}
