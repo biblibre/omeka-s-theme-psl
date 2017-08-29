@@ -6,10 +6,19 @@
 
     <?php echo $this->pageTitle($item->displayTitle(), 2); ?>
 
-    <?php if ($item->media()): ?>
-        <?php echo $this->universalViewer($item); ?>
-
-        <div class="media-list-wrapper">
+	    <?php if ($item->media()): ?>
+		   <div class="psl_uv">
+		    <?php echo $this->universalViewer($item); ?>
+		   </div>
+		     <div class="resource-metadata-wrapper">
+               <div class="resource-metadata">
+               <?php echo $item->displayValues(['viewName' => 'psl/resource-values']); ?>
+               </div>
+            </div>
+        
+    <?php endif; ?>
+	
+	<div class="media-list-wrapper">
             <div class="media-list">
                 <?php foreach ($item->media() as $media): ?>
                     <a href="<?php echo $media->url(); ?>" class="media resource">
@@ -17,16 +26,8 @@
                     </a>
                 <?php endforeach; ?>
             </div>
-        </div>
-    <?php endif; ?>
-
-    <div class="resource-metadata-wrapper">
-        <div class="resource-metadata">
-            <h2>Métadonnées</h2>
-            <?php echo $item->displayValues(['viewName' => 'psl/resource-values']); ?>
-        </div>
     </div>
-
+	
     <?php echo $this->partial('psl/toolbox', [
         'resource' => $item,
     ]); ?>

@@ -29,7 +29,7 @@
         <?php
             $itemSets = $this->api()->search('item_sets', [
                 'is_public' => 1,
-                'limit' => 8,
+                'limit' => 12,
                 'sort_by' => 'created',
                 'sort_order' => 'desc',
             ])->getContent();
