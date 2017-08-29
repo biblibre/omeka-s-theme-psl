@@ -12,8 +12,10 @@ class SearchForm extends AbstractHelper
     {
         $view = $this->getView();
         $searchPageId = $view->themeSetting('search_page_id');
-        $searchPage = $view->api()->read('search_pages', $searchPageId)->getContent();
+        if ($searchPageId) {
+            $searchPage = $view->api()->read('search_pages', $searchPageId)->getContent();
 
-        return $view->searchForm($searchPage);
+            return $view->searchForm($searchPage);
+        }
     }
 }

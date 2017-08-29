@@ -24,31 +24,36 @@
         </div>
     </div>
 
-    <?php
-        $itemSets = $this->api()->search('item_sets', [
-            'is_public' => 1,
-            'limit' => 8,
-            'sort_by' => 'created',
-            'sort_order' => 'desc',
-        ])->getContent();
-    ?>
-    <?php if (!empty($itemSets)): ?>
-        <div id="collections">
-            <header>
-                <h2>Collections</h2>
-                <?php $collectionsUrl = $this->url('search-page-' . $this->themeSetting('search_page_id'), [], [
-                    'query' => [
-                        'resource_type' => 'item_sets',
-                    ],
-                ], true); ?>
-                <div class="ruler"></div>
-                <a href="<?php echo $collectionsUrl; ?>"><img src="/themes/psl/asset/images/bullet.svg"/> Toutes les collections</a>
-            </header>
-            <main>
-                <?php echo $this->partial('psl/item-sets', [
-                    'itemSets' => $itemSets,
-                ]); ?>
-            </main>
-        </div>
+    <?php $searchPageId = $this->themeSetting('search_page_id'); ?>
+    <?php if ($searchPageId): ?>
+        <?php
+            $itemSets = $this->api()->search('item_sets', [
+                'is_public' => 1,
+                'limit' => 8,
+                'sort_by' => 'created',
+                'sort_order' => 'desc',
+            ])->getContent();
+        ?>
+        <?php if (!empty($itemSets)): ?>
+            <div id="collections">
+                <header>
+                    <h2>Collections</h2>
+                    <?php $collectionsUrl = $this->url('search-page-' . $this->themeSetting('search_page_id'), [], [
+                        'query' => [
+                            'resource_type' => 'item_sets',
+                        ],
+                    ], true); ?>
+                    <div class="ruler"></div>
+                    <a href="<?php echo $collectionsUrl; ?>"><img src="/themes/psl/asset/images/bullet.svg"/> Toutes les collections</a>
+                </header>
+                <main>
+                    <?php echo $this->partial('psl/item-sets', [
+                        'itemSets' => $itemSets,
+                    ]); ?>
+                </main>
+            </div>
+        <?php endif; ?>
+    <?php else: ?>
+        <?php error_log('WARNING: Theme is not properly configured'); ?>
     <?php endif; ?>
 </div>
