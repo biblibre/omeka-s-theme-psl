@@ -24,7 +24,7 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
         <?php echo $userBar; ?>
 
         <header>
-            <?php echo $this->themeSetting('header_html'); ?>
+            <?php echo $this->themeSetting('header'); ?>
             <div class="user-links">
                 <?php $identity = $this->identity(); ?>
                 <?php if ($identity): ?>
@@ -50,7 +50,7 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
         </main>
 
         <footer>
-            <?php if ($footerContent = $this->themeSetting('footer_html')): ?>
+            <?php if ($footerContent = $this->themeSetting('footer')): ?>
             <?php echo $footerContent; ?>
             <?php else: ?>
                 <?php echo $this->translate('Powered by Omeka S'); ?>
