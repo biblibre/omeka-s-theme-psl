@@ -41,7 +41,7 @@
   div.remove_basket {
       display: block;
 
-      background: url('../images/remove_basket.png') no-repeat;
+      background: url('../img/remove_basket.png') no-repeat;
       background-size:cover;
       width: 16px; 
       height: 16px; /* Height of new image */
@@ -64,10 +64,10 @@
         height: 16px; /* Height of new image */
     }
     .basket-add::before {
-        background-image: url('../images/pin.svg');
+        background-image: url('../img/pin.svg');
     }
     .basket-delete::before {
-        background-image: url('../images/pin-full.svg');
+        background-image: url('../img/pin-full.svg');
     }
 
     .user-links > * {
@@ -79,7 +79,7 @@
     a.show_basket::before {
         content: '';
         display: inline-block;
-        background-image: url('../images/pin.svg');
+        background-image: url('../img/pin.svg');
         background-size: cover;
         width: 16px;
         height: 16px;
@@ -286,7 +286,7 @@
 
     #search-form-wrapper {
         background-color: #ffffff;
-        background-image: url(../images/background.jpg);
+        background-image: url(../img/background.jpg);
         background-size: cover;
         background-position: 0 32px;
         background-repeat: no-repeat;
@@ -452,7 +452,7 @@
     }
 
     ul.psl-tabs li.psl-tab-map a {
-        background:url(../images/earth-globe.svg);
+        background:url(../img/earth-globe.svg);
         background-repeat: no-repeat;
         background-position: center center;
     }
@@ -461,7 +461,7 @@
     }
 
     ul.psl-tabs li.psl-tab-date a {
-        background:url(../images/clock.svg);
+        background:url(../img/clock.svg);
         background-repeat: no-repeat;
         background-position: center center;
     }
@@ -470,7 +470,7 @@
     }
 
     ul.psl-tabs li.psl-tab-itemset a {
-        background:url(../images/shelf.svg);
+        background:url(../img/shelf.svg);
         background-repeat: no-repeat;
         background-position: center center;
     }
@@ -479,7 +479,7 @@
     }
 
     ul.psl-tabs li.psl-tab-text a {
-        background:url(../images/plus.svg);
+        background:url(../img/plus.svg);
         background-repeat: no-repeat;
         background-position: center center;
     }
@@ -597,7 +597,7 @@
             -moz-appearance: none;
             appearance: none;
             background-color: white;
-            background-image: url(../images/caret-down.svg);
+            background-image: url(../img/caret-down.svg);
             background-size: 10px 10px;
             background-repeat: no-repeat;
             background-position: right 10px center;
@@ -739,7 +739,7 @@
         display: inline-block;
         width: 15px;
         height: 20px;
-        background-image: url(../images/checkbox-empty.svg);
+        background-image: url(../img/checkbox-empty.svg);
         background-size: 15px 15px;
         background-repeat: no-repeat;
         vertical-align: middle;
@@ -748,7 +748,7 @@
 
     .search-facet-item .active a::before {
         content: '';
-        background-image: url(../images/checkbox-checked.svg);
+        background-image: url(../img/checkbox-checked.svg);
     }
 
     .resource-list {
@@ -884,11 +884,11 @@
     }
 
     body.resource.item.show .media-list-wrapper .media-list-toggle.media-list-visible::after {
-        background-image: url(../images/caret-up.svg);
+        background-image: url(../img/caret-up.svg);
     }
 
     body.resource.item.show .media-list-wrapper .media-list-toggle.media-list-hidden::after {
-        background-image: url(../images/caret-down.svg);
+        background-image: url(../img/caret-down.svg);
     }
 
     body.resource.item.show .media-list {
@@ -918,7 +918,7 @@
 
     .resource-metadata-wrapper .resource-metadata {
         background-color: rgb(231, 239, 250);
-        background-image: url(../images/metadata-corner.svg);
+        background-image: url(../img/metadata-corner.svg);
         background-repeat: no-repeat;
         padding: 2em 1em 0 1em;
     }
@@ -1046,19 +1046,19 @@
     }
 
     #psl-toolbox ul li.basket > button::before {
-        background-image: url(../images/pin-blue.svg);
+        background-image: url(../img/pin-blue.svg);
     }
 
     #psl-toolbox ul li.basket > button.basket-delete::before {
-        background-image: url(../images/pin-full-blue.svg);
+        background-image: url(../img/pin-full-blue.svg);
     }
 
     #psl-toolbox ul li.share > a::before {
-        background-image: url(../images/share-blue.svg);
+        background-image: url(../img/share-blue.svg);
     }
 
     #psl-toolbox ul li.download > a::before {
-        background-image: url(../images/download.svg);
+        background-image: url(../img/download.svg);
     }
 
     #psl-toolbox ul li:hover > * {
@@ -1066,19 +1066,19 @@
     }
 
     #psl-toolbox ul li.basket:hover > button::before {
-        background-image: url(../images/pin-white.svg);
+        background-image: url(../img/pin-white.svg);
     }
 
     #psl-toolbox ul li.basket:hover > button.basket-delete::before {
-        background-image: url(../images/pin-full-white.svg);
+        background-image: url(../img/pin-full-white.svg);
     }
 
     #psl-toolbox ul li.share:hover > a::before {
-        background-image: url(../images/share-white.svg);
+        background-image: url(../img/share-white.svg);
     }
 
     #psl-toolbox ul li.download:hover > a::before {
-        background-image: url(../images/download-white.svg);
+        background-image: url(../img/download-white.svg);
     }
 
     #psl-toolbox > div {

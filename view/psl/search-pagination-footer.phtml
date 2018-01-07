@@ -22,7 +22,7 @@
 
             <?php if ($currentPage > 1): ?>
                 <span class="previous">
-                    <a href="<?php echo $this->escapeHtml($previousPageUrl); ?>"><img src="<?php echo $this->assetUrl('images/previous.svg'); ?>"/></a>
+                    <a href="<?php echo $this->escapeHtml($previousPageUrl); ?>"><img src="<?php echo $this->assetUrl('img/previous.svg'); ?>"/></a>
                 </span>
             <?php endif; ?>
 
@@ -39,7 +39,7 @@
 
             <?php if ($currentPage < $pageCount): ?>
                 <span class="next">
-                    <a href="<?php echo $this->escapeHtml($nextPageUrl); ?>"><img src="<?php echo $this->assetUrl('images/next.svg'); ?>"/></a>
+                    <a href="<?php echo $this->escapeHtml($nextPageUrl); ?>"><img src="<?php echo $this->assetUrl('img/next.svg'); ?>"/></a>
                 </span>
             <?php endif; ?>
         <?php endif; ?>

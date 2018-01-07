@@ -20,7 +20,7 @@
                 <div class="sort-directions">
                     <?php foreach ($link as $l): ?>
                         <div class="sort-direction sort-<?php echo $l['direction']; ?> <?php echo $l['active'] ? 'sort-active' : ''; ?>" data-name="<?php echo $l['name']; ?>" $>
-                            <img src="<?php echo $this->assetUrl('images/sort-' . $l['direction'] . '.svg'); ?>"/>
+                            <img src="<?php echo $this->assetUrl('img/sort-' . $l['direction'] . '.svg'); ?>"/>
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -44,7 +44,7 @@
         </script>
     </div>
     <div>
-        <a class="search-view-type search-view-type-grid" href="#"><img src="<?php echo $this->assetUrl('images/grid.svg'); ?>"/></a><!--
-        --><a class="search-view-type search-view-type-list" href="#"><img src="<?php echo $this->assetUrl('images/list.svg'); ?>"/></a>
+        <a class="search-view-type search-view-type-grid" href="#"><img src="<?php echo $this->assetUrl('img/grid.svg'); ?>"/></a><!--
+        --><a class="search-view-type search-view-type-list" href="#"><img src="<?php echo $this->assetUrl('img/list.svg'); ?>"/></a>
     </div>
 </div>
