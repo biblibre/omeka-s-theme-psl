@@ -127,15 +127,29 @@
         font-style: italic;
     }
     .field {
+        display: -ms-flexbox;
+        display: -webkit-box;
         display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
         margin: 1em 0;
     }
     .field .field-meta {
-        padding-right: 1em;
-        display: flex;
+        display: block;
         align-items: center;
+        width: 30%;
+        padding-right: 1em;
     }
-
+    .field .collapsible {
+        font-size: 13.5px;
+        display: block;
+        clear: both;
+        line-height: 18px;
+    }
+    .field .inputs {
+        width: 70%;
+        padding-left: 1.69492%;
+    }
     /* Header */
 
     body > header {
@@ -246,6 +260,65 @@
         font-weight: 300;
         font-size: 0.8em;
         line-height: 3em;
+    }
+
+    /* Advanced Search */
+
+    .field .field-meta {
+        font-size: 1.2em;
+    }
+
+    input[type="text"],
+    input[type="password"],
+    input[type="email"],
+    input[type="url"],
+    textarea {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        appearance: none;
+        border-radius: 0;
+        height: 45px;
+        border: 1px solid #dedede;
+        padding: 6.5px 1.69492%;
+        margin: 0;
+    }
+    input,
+    textarea,
+    button,
+    .button,
+    select {
+        font-size: 1.2em;
+        line-height: 30px;
+        margin: 0;
+        vertical-align: top;
+    }
+    button,
+    a.button,
+    [type="submit"] {
+        border-radius: 2px;
+        padding: 7.5px;
+        display: inline-block;
+        appearance: none;
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        border: 0;
+        cursor: pointer;
+    }
+    .remove-value {
+        background-color: #dedede;
+    text-indent: -9999px;
+        position: relative;
+        width: 45px;
+        margin-left: 7.5px;
+    }
+    .remove-value::before {
+        text-indent: 0;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        line-height: 45px;
     }
 
     /* Home page */
