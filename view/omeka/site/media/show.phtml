@@ -13,7 +13,7 @@
     <?php if (!empty($media->values())): ?>
         <div class="resource-metadata-wrapper">
             <div class="resource-metadata">
-                <h2>Métadonnées</h2>
+                <h2><?php echo $this->transalte('Metadata'); ?></h2>
                 <?php echo $media->displayValues(['viewName' => 'psl/resource-values']); ?>
             </div>
         </div>

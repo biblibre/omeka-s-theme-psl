@@ -11,9 +11,9 @@
         <div class="metadata">
             <?php echo $itemSet->displayValues(); ?>
         </div>
-        <?php echo $this->pageTitle('Contenus', 3); ?>
+        <?php echo $this->pageTitle($this->translate('Items'), 3); ?>
     <?php else: ?>
-        <?php echo $this->pageTitle('Contenus', 2); ?>
+        <?php echo $this->pageTitle($this->translate('Items'), 2); ?>
     <?php endif; ?>
 
     <?php echo $this->searchFilters(); ?>

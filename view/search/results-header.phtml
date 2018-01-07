@@ -13,7 +13,7 @@
                 $labels[$field] = $label;
             }
         ?>
-        <span>Mode de tri:</span>
+        <span><?php echo $this->translate('Sort mode'); ?></span>
         <?php foreach($links as $field => $link): ?>
             <div class="sort-field">
                 <span class="sort-label"><?php echo $labels[$field]; ?></span>

@@ -36,7 +36,7 @@
         <h2>Panier</h2>
 
         <div class="basket-sort">
-            <span>Mode de tri</span>
+            <span><?php echo $this->translate('Sort mode:'); ?></span>
             <?php echo $this->partial('psl/basket-sort-field', [
                 'title' => 'Titre',
                 'sort_by' => 'dcterms:title',
@@ -68,7 +68,7 @@
     ?>
 
     <?php if (!empty($items)): ?>
-        <h3><?php echo count($items) == 1 ? $this->translate('1 content') : sprintf($this->translate('%s contents'), count($items)); ?></h3>
+        <h3><?php echo count($items) == 1 ? $this->translate('1 item') : sprintf($this->translate('%s items'), count($items)); ?></h3>
         <div class="resource-list">
             <?php foreach ($items as $item): ?>
                 <?php echo $this->partial('search/resource', ['resource' => $item]); ?>
