@@ -1,25 +1,18 @@
 <?php $this->htmlElement('body')->appendAttribute('class', 'media resource show'); ?>
-
-<div id="content" role="main">
-    <?php echo $this->SearchForm(); ?>
-
-    <?php
-        $pageTitle = $media->item()->displayTitle() . ' : ' . $media->value('dcterms:title', ['type' => 'literal', 'default' => $media->filename()]);
-        echo $this->pageTitle($pageTitle, 2);
-    ?>
-
-    <?php echo $media->render(); ?>
-
-    <?php if (!empty($media->values())): ?>
-        <div class="resource-metadata-wrapper">
-            <div class="resource-metadata">
-                <h2><?php echo $this->transalte('Metadata'); ?></h2>
-                <?php echo $media->displayValues(['viewName' => 'psl/resource-values']); ?>
-            </div>
+<?php echo $this->SearchForm(); ?>
+<?php $pageTitle = $media->item()->displayTitle() . ' : ' . $media->displayTitle(); ?>
+<?php echo $this->pageTitle($pageTitle, 2); ?>
+<?php $this->trigger('view.show.before'); ?>
+<?php echo $media->render(); ?>
+<?php if (!empty($media->values())): ?>
+    <div class="resource-metadata-wrapper">
+        <div class="resource-metadata">
+            <h2><?php echo $this->transalte('Metadata'); ?></h2>
+            <?php echo $media->displayValues(['viewName' => 'psl/resource-values']); ?>
         </div>
-    <?php endif; ?>
-
-    <?php echo $this->partial('psl/toolbox', [
-        'resource' => $media,
-    ]); ?>
-</div>
+    </div>
+<?php endif; ?>
+<?php $this->trigger('view.show.after'); ?>
+<?php echo $this->partial('psl/toolbox', [
+    'resource' => $media,
+]); ?>
