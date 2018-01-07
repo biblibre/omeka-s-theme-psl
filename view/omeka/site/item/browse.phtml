@@ -1,45 +1,47 @@
-<?php $escape = $this->plugin('escapeHtml');?>
-<?php $this->htmlElement('body')->appendAttribute('class', 'item resource browse'); ?>
-<?php if (isset($itemSet)): ?>
-<?php $this->htmlElement('body')->appendAttribute('class', 'item-set'); ?>
+<?php
+$escape = $this->plugin('escapeHtml');
+$this->htmlElement('body')->appendAttribute('class', 'item resource browse');
+$query = $this->params()->fromQuery();
+if (isset($itemSet)):
+    $this->htmlElement('body')->appendAttribute('class', 'item-set');
+    $query['item_set_id'] = $itemSet->id();
+endif;
+$headingTerm = $this->siteSetting('browse_heading_property_term', 'dcterms:title');
+$bodyTerm = $this->siteSetting('browse_body_property_term', 'dcterms:description');
+$itemSetShow = isset($itemSet);
+?>
+
+<?php if ($itemSetShow): ?>
+    <?php echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
+    <h3><?php echo $this->translate('Item set'); ?></h3>
+    <div class="metadata">
+        <?php echo $itemSet->displayValues(); ?>
+    </div>
+    <div class="item-set-items">
+    <?php echo '<h3>' . $escape($this->translate('Items')) . '</h3>'; ?>
+<?php else: ?>
+    <?php echo $this->pageTitle($this->translate('Items'), 2); ?>
 <?php endif; ?>
 
-<div id="content" role="main">
-    <?php if (isset($itemSet)): ?>
-        <?php echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
-        <h3>Collections</h3>
-        <div class="metadata">
-            <?php echo $itemSet->displayValues(); ?>
-        </div>
-        <?php echo $this->pageTitle($this->translate('Items'), 3); ?>
-    <?php else: ?>
-        <?php echo $this->pageTitle($this->translate('Items'), 2); ?>
-    <?php endif; ?>
-
-    <?php echo $this->searchFilters(); ?>
-    <?php $this->trigger('view.browse.before'); ?>
-    <?php echo $this->pagination(); ?>
-
-    <ul class="resource-list">
-        <?php foreach ($items as $item): ?>
-        <li class="item resource">
-            <?php if ($primaryMedia = $item->primaryMedia()): ?>
-            <img
-                src="<?php echo $escape($primaryMedia->thumbnailUrl('medium')); ?>"
-                title="<?php echo $escape($primaryMedia->displayTitle()); ?>"
-                alt="<?php echo $escape($primaryMedia->mediaType()); ?> thumbnail"
-            >
-            <?php endif; ?>
-            <h4><a href="<?php echo $this->ResourceUrl($item); ?>"><?php echo $item->displayTitle(); ?></a></h4>
-
-            <?php echo $this->updateBasketLink($item); ?>
-
-            <?php if ($description = $item->displayDescription()): ?>
-            <div class="description"><?php echo $description; ?></div>
-            <?php endif; ?>
-        </li>
-        <?php endforeach; ?>
-    </ul>
-    <?php echo $this->pagination(); ?>
-    <?php $this->trigger('view.browse.after'); ?>
-</div>
+<?php echo $this->searchFilters(); ?>
+<?php echo $this->hyperlink($this->translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?>
+<?php echo $this->pagination(); ?>
+<?php $this->trigger('view.browse.before'); ?>
+<ul class="resource-list">
+<?php
+foreach ($items as $item):
+    $heading = $item->value($headingTerm, ['default' => $this->translate('[Untitled]')]);
+    $body = $item->value($bodyTerm);
+?>
+    <li class="item resource">
+        <?php echo $item->linkRaw($this->thumbnail($item, 'medium')); ?>
+        <h4><?php echo $item->link($heading); ?></h4>
+        <?php if ($body): ?>
+        <div class="description"><?php echo $body; ?></div>
+        <?php endif; ?>
+    </li>
+<?php endforeach; ?>
+</ul>
+<?php echo ($itemSetShow) ? '</div>' : ''; ?>
+<?php $this->trigger('view.browse.after'); ?>
+<?php echo $this->pagination(); ?>
