@@ -17,6 +17,7 @@
     <?php endif; ?>
 
     <?php echo $this->searchFilters(); ?>
+    <?php $this->trigger('view.browse.before'); ?>
     <?php echo $this->pagination(); ?>
 
     <ul class="resource-list">
