@@ -1,0 +1,7 @@
+{
+    "name": "biblibre/psl",
+    "type": "omeka-s-theme",
+    "require": {
+        "omeka/omeka-s": "*"
+    }
+}
