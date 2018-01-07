@@ -6,8 +6,14 @@
         }
     ?>
     <div class="collection">
-        <?php $media = $itemSet->primaryMedia(); ?>
-        <a <?php if ($media): ?>style="background-image: url(<?php echo $media->thumbnailUrl('large'); ?>)"<?php endif; ?> href="<?php echo $this->url('search-page-' . $this->themeSetting('search_page_id'), [], ['query' => ['itemSet' => ['ids' => [$itemSet->id()]]]], true); ?>">
+        <?php
+        $searchPageId = $this->themeSetting('search_page_id');
+        $url = $searchPageId
+            ? $this->url('search-page-' . $searchPageId, [], ['query' => ['itemSet' => ['ids' => [$itemSet->id()]]]], true)
+            : $this->url('site/resource-id', ['controller' => 'item-set', 'action' => 'show', 'id' => $itemSet->id()], [], true);
+        $media = $itemSet->primaryMedia();
+        ?>
+        <a <?php if ($media): ?>style="background-image: url(<?php echo $media->thumbnailUrl('large'); ?>)"<?php endif; ?> href="<?php echo $url; ?>">
             <div class="collection-title">
                 <div>
                     <span><?php echo $itemSetTitle; ?></span>
