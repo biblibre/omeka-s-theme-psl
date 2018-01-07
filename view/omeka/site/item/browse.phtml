@@ -1,6 +1,7 @@
 <?php
 $escape = $this->plugin('escapeHtml');
 $this->htmlElement('body')->appendAttribute('class', 'item resource browse');
+$hasBasket = $this->getHelperPluginManager()->has('updateBasketLink');
 $query = $this->params()->fromQuery();
 if (isset($itemSet)):
     $this->htmlElement('body')->appendAttribute('class', 'item-set');
@@ -34,8 +35,11 @@ foreach ($items as $item):
     $body = $item->value($bodyTerm);
 ?>
     <li class="item resource">
+        <?php if ($primaryMedia = $item->primaryMedia()): ?>
         <?php echo $item->linkRaw($this->thumbnail($item, 'medium')); ?>
-        <h4><?php echo $item->link($heading); ?></h4>
+        <?php endif; ?>
+        <h4><a href="<?php echo $this->ResourceUrl($item); ?>"><?php echo $item->displayTitle(); ?></a></h4>
+        <?php if ($hasBasket) echo $this->updateBasketLink($item); ?>
         <?php if ($body): ?>
         <div class="description"><?php echo $body; ?></div>
         <?php endif; ?>

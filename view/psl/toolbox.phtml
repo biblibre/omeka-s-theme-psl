@@ -1,9 +1,13 @@
+<?php $this->headScript()->appendFile($this->assetUrl('js/toolbox.js')); ?>
+<?php $hasBasket = $this->getHelperPluginManager()->has('updateBasketLink'); ?>
 <?php $ark = $this->getHelperPluginManager()->has('ark') ? $this->ark($resource)->getAbsoluteUrl(): null; ?>
 <?php $isMedia = $resource->resourceName() === 'media'; ?>
 
 <div id="psl-toolbox">
     <ul>
+        <?php if ($hasBasket): ?>
         <li class="basket"><?php echo $this->updateBasketLink($resource); ?></li>
+        <?php endif; ?>
         <?php if ($ark): ?>
         <li class="share">
             <a href="#psl-toolbox-share"></a>
@@ -28,4 +32,3 @@
         </div>
     <?php endif; ?>
 </div>
-<?php $this->headScript()->appendFile($this->assetUrl('js/toolbox.js')); ?>

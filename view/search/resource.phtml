@@ -28,6 +28,7 @@
 ?>
 
 <?php $escape = $this->plugin('escapeHtml'); ?>
+<?php $hasBasket = $this->getHelperPluginManager()->has('updateBasketLink'); ?>
 <?php $resourceName = $resource->resourceName(); ?>
 <?php
     if ($resourceName === 'item_sets') {
@@ -64,7 +65,7 @@
     </div>
     <div class="resource-metadata">
         <h4>
-            <?php if ($resourceName === 'items' || $resourceName === 'media'): ?>
+            <?php if (($resourceName === 'items' || $resourceName === 'media') && $hasBasket): ?>
                 <?php echo $this->updateBasketLink($resource); ?>
             <?php endif; ?>
             <a href="<?php echo $this->escapeHtml($resourceUrl); ?>"><?php echo $resource->displayTitle(); ?></a>
