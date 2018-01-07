@@ -451,6 +451,12 @@
     #psl-search-form {
         border: 1px solid rgb(188, 188, 188);
     }
+    #search-form {
+        display: flex;
+    }
+    #search-form input[name="search"] {
+        flex: 1;
+    }
     ul.psl-tabs {
         background-color: white;
     }

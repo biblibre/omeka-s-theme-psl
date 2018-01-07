@@ -13,5 +13,10 @@ class SearchForm extends AbstractHelper
             $searchPage = $view->api()->read('search_pages', $searchPageId)->getContent();
             return $view->searchForm($searchPage);
         }
+
+        $html = '<div id="search">';
+        $html .= $view->partial('common/search-form');
+        $html .= '</div>';
+        return $html;
     }
 }

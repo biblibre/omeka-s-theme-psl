@@ -1,18 +1,19 @@
 <?php
 $escape = $this->plugin('escapeHtml');
+$this->htmlElement('html')->setAttribute('lang', $this->lang());
 $this->headMeta()->setCharset('utf-8');
 $this->headMeta()->appendName('viewport', 'width=device-width, initial-scale=1');
 $this->headTitle($this->setting('installation_title', 'Omeka S'))->setSeparator(' · ');
-$this->headLink()->appendStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
-$this->headLink()->appendStylesheet($this->assetUrl('css/style.css'));
+$this->headLink()->prependStylesheet($this->assetUrl('css/style.css'));
+$this->headLink()->prependStylesheet($this->assetUrl('css/iconfonts.css', 'Omeka'));
+$this->headScript()->prependFile($this->assetUrl('js/toolbox.js'));
+$this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
-$this->headScript()->appendFile($this->assetUrl('js/global.js', 'Omeka'));
-$this->headScript()->appendFile($this->assetUrl('js/toolbox.js'));
 $this->trigger('view.layout');
 $userBar = $this->partial('common/user-bar', ['site' => $site]);
 ?>
 <?php echo $this->doctype(); ?>
-<?php echo $this->htmlElement('html')->setAttribute('lang', $this->lang()); ?>
+<?php echo $this->htmlElement('html'); ?>
     <head>
         <?php echo $this->headMeta(); ?>
         <?php echo $this->headTitle(); ?>
@@ -25,7 +26,23 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
         <?php echo $userBar; ?>
 
         <header>
-            <?php echo $this->themeSetting('header'); ?>
+            <?php $headerContent = $this->themeSetting('header'); ?>
+            <?php if ($headerContent): ?>
+            <?php echo $headerContent; ?>
+            <?php elseif ($this->themeSetting('logo')): ?>
+            <a href="<?php echo $site->url(); ?>" class="site-title"><img src="<?php echo $this->themeSettingAssetUrl('logo'); ?>" title="Logo"></a>
+            <?php else: ?>
+            <a href="<?php echo $site->url(); ?>" class="site-title"><?php echo $this->pageTitle($site->title()); ?></a>
+            <?php endif; ?>
+
+            <nav>
+                <?php
+                echo $site->publicNav()->menu()->renderMenu(null, [
+                    'maxDepth' => $this->themeSetting('nav_depth') - 1
+                ]);
+                ?>
+            </nav>
+
             <div class="user-links">
                 <?php $identity = $this->identity(); ?>
                 <?php if ($identity): ?>
@@ -46,7 +63,16 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
             <?php endif; ?>
         </nav>
 
+        <?php if (empty($isHomePage)): ?>
+            <?php echo $this->SearchForm(); ?>
+        <?php else: ?>
+        <div id="search-form-wrapper">
+            <?php echo $this->SearchForm(); ?>
+        </div>
+        <?php endif; ?>
+
         <main>
+            <?php echo $this->messages(); ?>
             <?php echo $this->content; ?>
         </main>
 

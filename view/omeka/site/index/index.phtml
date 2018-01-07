@@ -1,60 +1,56 @@
-<div id="content" role="main">
-    <?php
-        $frontPageItemSetId = $this->themeSetting('front_page_item_set_id');
-        $frontPageImages = [];
-        for ($i = 1; $i < 11; $i++) {
-            $frontPageImage = $this->themeSettingAssetUrl("front_page_image_$i");
-            if ($frontPageImage) {
-                $frontPageImages[] = $frontPageImage;
-            }
-        }
-        if (count($frontPageImages)) {
-            $index = rand(0, count($frontPageImages) - 1);
-            $url = $frontPageImages[$index];
-            $this->headStyle()->appendStyle('
-                #search-form-wrapper {
-                    background-image: url("' . $url . '");
-                }
-            ');
-        }
-    ?>
-    <div id="search-form-wrapper">
-        <div id="search-form">
-            <?php echo $this->SearchForm(); ?>
-        </div>
-    </div>
+<?php
+// The search form needs to be wrapped on home page, so quick set a variable to
+// check it in layout. This is simpler than a check of the home page url or route.
+$this->getHelperPluginManager()->get('view_model')->getRoot()->setVariable('isHomePage', true);
 
-    <?php
-    $itemSets = $this->api()->search('item_sets', [
-        'is_public' => 1,
-        'limit' => 12,
-        'sort_by' => 'created',
-        'sort_order' => 'desc',
-    ])->getContent();
-    ?>
-    <?php if (!empty($itemSets)): ?>
-        <?php $searchPageId = $this->themeSetting('search_page_id');
-        if ($searchPageId):
-            $collectionsUrl = $this->url('search-page-' . $searchPageId, [], [
-                'query' => [
-                    'resource_type' => 'item_sets',
-                ],
-            ], true);
-        else:
-            $collectionsUrl = $this->url('site/resource', ['controller' => 'item-set', 'action' => 'browse'], [], true);
-        endif;
-    ?>
-    <div id="collections">
-        <header>
-            <h2><?php echo $this->translate('Item sets'); ?></h2>
-            <div class="ruler"></div>
-            <a href="<?php echo $collectionsUrl; ?>"><img src="<?php echo $this->assetUrl('img/bullet.svg'); ?>"/> <?php echo $this->translate('All collections'); ?></a>
-        </header>
-        <main><?php // TODO Remove <main> from here. ?>
-            <?php echo $this->partial('psl/item-sets', [
-                'itemSets' => $itemSets,
-            ]); ?>
-        </main>
-    </div>
-    <?php endif; ?>
+$frontPageItemSetId = $this->themeSetting('front_page_item_set_id');
+$frontPageImages = [];
+for ($i = 1; $i < 11; $i++) {
+    $frontPageImage = $this->themeSettingAssetUrl("front_page_image_$i");
+    if ($frontPageImage) {
+        $frontPageImages[] = $frontPageImage;
+    }
+}
+if (count($frontPageImages)) {
+    $index = rand(0, count($frontPageImages) - 1);
+    $url = $frontPageImages[$index];
+    $this->headStyle()->appendStyle('
+        #search-form-wrapper {
+            background-image: url("' . $url . '");
+        }
+    ');
+}
+
+$itemSets = $this->api()->search('item_sets', [
+    'is_public' => 1,
+    'limit' => 12,
+    'sort_by' => 'created',
+    'sort_order' => 'desc',
+])->getContent();
+
+?>
+<?php if (!empty($itemSets)): ?>
+    <?php $searchPageId = $this->themeSetting('search_page_id');
+    if ($searchPageId):
+        $collectionsUrl = $this->url('search-page-' . $searchPageId, [], [
+            'query' => [
+                'resource_type' => 'item_sets',
+            ],
+        ], true);
+    else:
+        $collectionsUrl = $this->url('site/resource', ['controller' => 'item-set', 'action' => 'browse'], [], true);
+    endif;
+?>
+<div id="collections">
+    <header>
+        <h2><?php echo $this->translate('Item sets'); ?></h2>
+        <div class="ruler"></div>
+        <a href="<?php echo $collectionsUrl; ?>"><img src="<?php echo $this->assetUrl('img/bullet.svg'); ?>"/> <?php echo $this->translate('All collections'); ?></a>
+    </header>
+    <main><?php // TODO Remove <main> from here. ?>
+        <?php echo $this->partial('psl/item-sets', [
+            'itemSets' => $itemSets,
+        ]); ?>
+    </main>
 </div>
+<?php endif; ?>

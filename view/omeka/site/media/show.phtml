@@ -1,5 +1,4 @@
 <?php $this->htmlElement('body')->appendAttribute('class', 'media resource show'); ?>
-<?php echo $this->SearchForm(); ?>
 <?php $pageTitle = $media->item()->displayTitle() . ' : ' . $media->displayTitle(); ?>
 <?php echo $this->pageTitle($pageTitle, 2); ?>
 <?php $this->trigger('view.show.before'); ?>
