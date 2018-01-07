@@ -5,7 +5,7 @@
             $itemSetTitle = $itemSet->displayTitle();
         }
     ?>
-    <div class="collection">
+    <div class="item-set resource collection">
         <?php
         $searchPageId = $this->themeSetting('search_page_id');
         $url = $searchPageId
@@ -19,6 +19,9 @@
                     <span><?php echo $itemSetTitle; ?></span>
                 </div>
             </div>
+            <?php /* if ($description = $itemSet->displayDescription()): ?>
+            <div class="description"><?php echo $description; ?></div>
+            <?php endif; */ ?>
         </a>
     </div>
 <?php endforeach; ?>

@@ -1,23 +1,20 @@
 <?php $escape = $this->plugin('escapeHtml');?>
 <?php $this->htmlElement('body')->appendAttribute('class', 'item-set resource browse'); ?>
 
-<div id="content" role="main">
-    <?php echo $this->pageTitle($this->translate('Item sets'), 2); ?>
+<?php echo $this->pageTitle($this->translate('Item sets'), 2); ?>
 
-    <?php
-        $itemSets = $this->api()->search('item_sets', [
-            'is_public' => 1,
-            'sort_by' => 'dcterms:title',
-            'sort_order' => 'asc',
-        ])->getContent();
-    ?>
-    <?php if (!empty($itemSets)): ?>
-        <div id="collections">
-            <main><?php // TODO Remove <main> from here. ?>
-                <?php echo $this->partial('psl/item-sets', [
-                    'itemSets' => $itemSets,
-                ]); ?>
-            </main>
-        </div>
-    <?php endif; ?>
-</div>
+<?php echo $this->searchFilters(); ?>
+<?php echo $this->hyperlink($this->translate('Advanced search'), $this->url(null, ['action' => 'search'], true), ['class' => 'advanced-search']); ?>
+<?php if (!empty($itemSets)): ?>
+    <?php echo $this->pagination(); ?>
+    <?php $this->trigger('view.browse.before'); ?>
+    <div id="collections" <?php /* class="resource-list"*/ ?>>
+        <main><?php // TODO Remove <main> from here. ?>
+        <?php echo $this->partial('psl/item-sets', [
+            'itemSets' => $itemSets,
+        ]); ?>
+        </main>
+    </div>
+    <?php $this->trigger('view.browse.after'); ?>
+    <?php echo $this->pagination(); ?>
+<?php endif; ?>
