@@ -2,32 +2,27 @@
 namespace OmekaTheme\Helper;
 
 use Zend\View\Helper\AbstractHelper;
-use Zend\ServiceManager\Exception\ServiceNotFoundException;
 use Omeka\Api\Representation\AbstractResourceEntityRepresentation;
-use Omeka\Module\Manager as ModuleManager;
 
 class ResourceUrl extends AbstractHelper
 {
     public function __invoke(AbstractResourceEntityRepresentation $resource)
     {
         $view = $this->getView();
+        $pluginManager = $view->getHelperPluginManager();
         $url = null;
 
-        try {
+        if ($pluginManager->has('ark')) {
             $arkPlugin = $view->plugin('ark');
             $url = $arkPlugin->getAbsoluteUrl($resource);
-        } catch (ServiceNotFoundException $e) {
         }
 
-        if (!$url) {
-            try {
-                $getResourceFullIdentifierPlugin = $view->plugin('getResourceFullIdentifier');
-                $url = $getResourceFullIdentifierPlugin($resource);
-            } catch (ServiceNotFoundException $e) {
-            }
+        if (empty($url) && $pluginManager->has('getResourceFullIdentifier')) {
+            $getResourceFullIdentifierPlugin = $view->plugin('getResourceFullIdentifier');
+            $url = $getResourceFullIdentifierPlugin($resource);
         }
 
-        if (!$url) {
+        if (empty($url)) {
             $url = $resource->url();
         }
 
