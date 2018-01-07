@@ -1,22 +1,27 @@
+<?php $ark = $this->getHelperPluginManager()->has('ark') ? $this->ark($resource)->getAbsoluteUrl(): null; ?>
+<?php $isMedia = $resource->resourceName() === 'media'; ?>
+
 <div id="psl-toolbox">
     <ul>
         <li class="basket"><?php echo $this->updateBasketLink($resource); ?></li>
+        <?php if ($ark): ?>
         <li class="share">
             <a href="#psl-toolbox-share"></a>
         </li>
-        <?php if ($resource->resourceName() === 'media'): ?>
+        <?php endif; ?>
+        <?php if ($isMedia): ?>
             <li class="download">
                 <a href="#psl-toolbox-download"></a>
             </li>
         <?php endif; ?>
     </ul>
+    <?php if ($ark): ?>
     <div id="psl-toolbox-share">
-        <?php if ($this->getHelperPluginManager()->has('ark') && $ark = $this->ark($resource)->getAbsoluteUrl()): ?>
-            <label><?php echo $this->translate('Permalink'); ?></label>
-            <a href="<?php echo $ark; ?>"><?php echo $ark; ?></a>
-        <?php endif; ?>
+        <label><?php echo $this->translate('Permalink'); ?></label>
+        <a href="<?php echo $ark; ?>"><?php echo $ark; ?></a>
     </div>
-    <?php if ($resource->resourceName() === 'media'): ?>
+    <?php endif; ?>
+    <?php if ($isMedia): ?>
         <div id="psl-toolbox-download">
             <label><?php echo $this->translate('Original file:'); ?></label>
             <a href="<?php echo $resource->originalUrl(); ?>"><?php echo $resource->filename(); ?></a>

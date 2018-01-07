@@ -6,28 +6,27 @@
 
     <?php echo $this->pageTitle($item->displayTitle(), 2); ?>
 
-	    <?php if ($item->media()): ?>
-		   <div class="psl_uv">
-		    <?php echo $this->universalViewer($item); ?>
-		   </div>
-		     <div class="resource-metadata-wrapper">
-               <div class="resource-metadata">
-               <?php echo $item->displayValues(['viewName' => 'psl/resource-values']); ?>
-               </div>
-            </div>
-        
-    <?php endif; ?>
-	
-	<div class="media-list-wrapper">
-            <div class="media-list">
-                <?php foreach ($item->media() as $media): ?>
-                    <a href="<?php echo $media->url(); ?>" class="media resource">
-                        <img src="<?php echo $escape($media->thumbnailUrl('square')); ?>" title="<?php echo $escape($media->displayTitle()); ?>">
-                    </a>
-                <?php endforeach; ?>
-            </div>
+    <?php if ($item->media()): ?>
+    <div class="psl_uv">
+        <?php echo $this->universalViewer($item); ?>
     </div>
-	
+    <div class="resource-metadata-wrapper">
+        <div class="resource-metadata">
+            <?php echo $item->displayValues(['viewName' => 'psl/resource-values']); ?>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <div class="media-list-wrapper">
+        <div class="media-list">
+            <?php foreach ($item->media() as $media): ?>
+                <a href="<?php echo $media->url(); ?>" class="media resource">
+                    <img src="<?php echo $escape($media->thumbnailUrl('square')); ?>" title="<?php echo $escape($media->displayTitle()); ?>">
+                </a>
+            <?php endforeach; ?>
+        </div>
+    </div>
+
     <?php echo $this->partial('psl/toolbox', [
         'resource' => $item,
     ]); ?>
@@ -39,7 +38,7 @@
         if (mediaList.length) {
             $('<a>')
                 .addClass('media-list-toggle')
-                .html(<?php echo json_encode('Accès aux fichiers'); ?>)
+                .html(<?php echo json_encode($this->translate('Access to files')); ?>)
                 .on('click', function(e) {
                     e.preventDefault();
                     if (mediaList.is(':visible')) {
