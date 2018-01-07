@@ -648,19 +648,27 @@
     .browse-sort .sort-direction.sort-active {
         display: block;
     }
-    .search-view-type {
+    .search-results h3,
+    .browse-list h3 {
+        margin-left: 0.5em;
+    }
+    .search-view-type,
+    .browse-view-type {
         display: inline-block;
         margin-left: 10px;
     }
-    .search-view-type:last-child {
+    .search-view-type:last-child,
+    .browse-view-type:last-child {
         margin-right: 1px;
     }
-    .search-view-type img {
+    .search-view-type img,
+    .browse-view-type img {
         width: 49px;
         background-color: #687d9a;
         display: block;
     }
-    .search-view-type.active img {
+    .search-view-type.active img,
+    .browse-view-type.active img {
         background-color: #53647b;
     }
     aside.search-sidebar {
@@ -792,7 +800,8 @@
     .resource-list.list .resource .resource-thumbnail {
         margin-right: 2em;
     }
-    .search-results-footer {
+    .search-results-footer,
+    .browse-footer {
         display: flex;
         justify-content: flex-end;
         margin-top: 2em;

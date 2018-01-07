@@ -76,24 +76,12 @@ if ($resourceName === 'item-set') {
                 <?php echo sprintf($this->translatePlural('%s item', '%s items', $resource->itemCount()), $resource->itemCount()); ?>
             </div>
         <?php endif; ?>
-        <?php
-            $properties = [
-                'dcterms:creator' => $this->translate('Creator'),
-                'dcterms:publisher' => $this->translate('Publisher'),
-                'dcterms:created' => $this->translate('Date Created'),
-                'dcterms:type' => $this->translate('Type'),
-                'dcterms:source' => $this->translate('Source'),
-                'dcterms:subject' => $this->translate('Subject'),
-                'dcterms:identifier' => $this->translate('Identifier'),
-            ];
-        ?>
-        <?php foreach ($properties as $term => $label): ?>
-            <?php $value = $resource->value($term, ['type' => 'literal']); ?>
-            <?php if ($value): ?>
-                <div class="<?php echo str_replace(':', '-', $term); ?>">
-                    <span><?php echo $value; ?></span>
-                </div>
-            <?php endif; ?>
-        <?php endforeach; ?>
+
+        <?php $value = $resource->value($bodyTerm, ['type' => 'literal']); ?>
+        <?php if ($value): ?>
+            <div class="<?php echo str_replace(':', '-', $bodyTerm); ?>">
+                <span><?php echo $value; ?></span>
+            </div>
+        <?php endif; ?>
     </div>
 </div>

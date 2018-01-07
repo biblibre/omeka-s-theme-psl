@@ -6,8 +6,6 @@ if (isset($itemSet)):
     $this->htmlElement('body')->appendAttribute('class', 'item-set');
     $query['item_set_id'] = $itemSet->id();
 endif;
-$headingTerm = $this->siteSetting('browse_heading_property_term', 'dcterms:title');
-$bodyTerm = $this->siteSetting('browse_body_property_term', 'dcterms:description');
 $itemSetShow = isset($itemSet);
 $this->headLink()->appendStylesheet($this->assetUrl('css/search.css', 'Search'));
 $this->headScript()->appendFile($this->assetUrl('js/search.js', 'Search'));
@@ -42,8 +40,8 @@ $sortHeadings = [
 <?php echo $this->hyperlink($this->translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?>
 <?php $this->trigger('view.browse.before'); ?>
 
-<div class="search-results-wrapper">
-    <div class="search-results">
+<div class="browse-list-wrapper">
+    <div class="browse-list">
         <?php if ($totalCount): ?>
             <?php
                 echo $this->partial('common/resource-header', [
@@ -52,10 +50,10 @@ $sortHeadings = [
             ?>
 
             <?php
-            echo $this->partial('common/resource-list', [
-                'title' => sprintf($this->translatePlural('%s item', '%s items', $totalCount), $totalCount),
-                'resources' => $resources,
-            ]);
+                echo $this->partial('common/resource-list', [
+                    'resources' => $resources,
+                    'title' => sprintf($this->translatePlural('%s item', '%s items', $totalCount), $totalCount),
+                ]);
             ?>
 
             <?php
@@ -67,8 +65,6 @@ $sortHeadings = [
             <div class="noresults"><?php echo $this->translate('No items.'); ?></div>
         <?php endif; ?>
     </div>
-
-    <?php // echo $this->partial('search/facets', ['facets' => $facets]); ?>
 </div>
 
 <?php $this->trigger('view.browse.after'); ?>
@@ -80,20 +76,21 @@ $sortHeadings = [
 <?php /* TODO Move to js. */ ?>
 <script>
     $(document).ready(function() {
-        $('.search-results-sort select').on('change', function() {
+        $('.browse-sort select').on('change', function() {
             Search.sortBy($(this).val());
         });
 
-        $('.search-view-type-list').on('click', function(e) {
+        $('.browse-view-type-list').on('click', function(e) {
             e.preventDefault();
             Search.setViewType('list');
-            $('.search-view-type').removeClass('active');
+            $('.browse-view-type').removeClass('active');
             $(this).addClass('active');
         });
-        $('.search-view-type-grid').on('click', function(e) {
+
+        $('.browse-view-type-grid').on('click', function(e) {
             e.preventDefault();
             Search.setViewType('grid');
-            $('.search-view-type').removeClass('active');
+            $('.browse-view-type').removeClass('active');
             $(this).addClass('active');
         });
 
@@ -101,6 +98,6 @@ $sortHeadings = [
         if (!view_type) {
             view_type = 'list';
         }
-        $('.search-view-type-' + view_type).click();
+        $('.browse-view-type-' + view_type).click();
     });
 </script>
