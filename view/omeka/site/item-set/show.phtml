@@ -1,6 +1,7 @@
 <?php $escape = $this->plugin('escapeHtml'); ?>
 <?php $this->htmlElement('body')->appendAttribute('class', 'item-set show'); ?>
 
+<?php $this->trigger('view.show.before'); ?>
 <div id="content" role="navigation">
     <?php echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
     <?php echo $itemSet->displayValues(); ?>
@@ -8,10 +9,10 @@
     <?php if ($itemCount > 0): ?>
     <div class="items">
         <?php if ($itemCount < 5): ?>
-        <h3><?php echo sprintf('Tous les contenus (%s)', $itemCount); ?></h3>
+        <h3><?php echo sprintf($this->translate('All contents (%s)'), $itemCount); ?></h3>
         <?php else: ?>
-        <h3>Contenus récents</h3>
-        <?php echo $this->hyperlink('Voir tous les contenus de la collection', $this->url('site/resource', ['site-slug' => $site->slug(), 'controller' => 'item', 'action' => 'browse'], ['query' => ['item_set_id' => $itemSet->id()]])); ?>
+        <h3><?php echo $this->translate('Recent contents'); ?></h3>
+        <?php echo $this->hyperlink($this->translate('Show all contents of the collection'), $this->url('site/resource', ['site-slug' => $site->slug(), 'controller' => 'item', 'action' => 'browse'], ['query' => ['item_set_id' => $itemSet->id()]])); ?>
         <?php endif; ?>
         <ul class="resource-list">
             <?php foreach ($items as $item): ?>
