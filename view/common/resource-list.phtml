@@ -1,6 +1,7 @@
 <?php
 $headingTerm = $this->siteSetting('browse_heading_property_term', 'dcterms:title');
 $bodyTerm = $this->siteSetting('browse_body_property_term', 'dcterms:description');
+$bodyTerms = $this->themeSetting('browse_body_property_terms', [$bodyTerm]);
 ?>
 <?php if (!empty($resources)): ?>
 <h3><?php echo $title; ?></h3>
@@ -10,7 +11,7 @@ $bodyTerm = $this->siteSetting('browse_body_property_term', 'dcterms:description
         echo $this->partial('common/resource', [
             'resource' => $resource,
             'headingTerm' => $headingTerm,
-            'bodyTerm' => $bodyTerm,
+            'bodyTerms' => $bodyTerms,
         ]);
     endforeach;
     ?>

@@ -29,6 +29,8 @@
 
 <?php
 $headingTerm = $this->siteSetting('browse_heading_property_term', 'dcterms:title');
+$bodyTerm = $this->siteSetting('browse_body_property_term', 'dcterms:description');
+$bodyTerms = $this->siteSetting('browse_body_property_terms', [$bodyTerm]);
 ?>
 <?php $results = $response->getResults($resourceName); ?>
 <?php if (!empty($results)): ?>
@@ -45,9 +47,10 @@ $headingTerm = $this->siteSetting('browse_heading_property_term', 'dcterms:title
         <?php
         foreach ($results as $result):
             $resource = $this->api()->read($resourceName, $result['id'])->getContent();
-            echo $this->partial('search/resource', [
+            echo $this->partial('common/resource', [
                 'resource' => $resource,
                 'headingTerm' => $headingTerm,
+                'bodyTerms' => $bodyTerms,
             ]);
         endforeach;
         ?>
