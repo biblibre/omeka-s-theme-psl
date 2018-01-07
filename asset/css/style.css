@@ -789,6 +789,11 @@
         justify-content: flex-end;
         margin-top: 2em;
     }
+    nav.pagination {
+        display: flex;
+        justify-content: flex-end;
+        margin-top: 2em;
+    }
     nav.pagination .page {
         margin-left: 0.25em;
         margin-right: 0.25em;
@@ -1062,4 +1067,11 @@ div.psl_item {
 div.psl_uv {
     width: 53%;
     float: left;
+}
+
+.resource.browse .advanced-search {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 2em;
+    margin-top: 2em;
 }
