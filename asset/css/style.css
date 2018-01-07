@@ -606,38 +606,46 @@
         background-color: rgb(67, 134, 226);
         color: white;
     }
-    .search-results-sort {
+    .search-results-sort,
+    .browse-sort {
         display: flex;
         margin-left: 0.5em;
         border-bottom: 2px solid rgb(83, 100, 123);
         align-items: center;
     }
-    .search-results-sort > span {
+    .search-results-sort > span,
+    .browse-sort > span {
         margin-right: 2em;
         color: rgb(83, 100, 123);
     }
-    .search-results-sort .sort-field {
+    .search-results-sort .sort-field,
+    .browse-sort .sort-field {
         display: flex;
         align-items: center;
         margin-left: 1em;
         min-height: 40px;
         cursor: pointer;
     }
-    .search-results-sort .sort-directions {
+    .search-results-sort .sort-directions,
+    .browse-sort .sort-directions {
         margin-left: 0.5em;
         min-width: 13px;
     }
-    .search-results-sort .sort-direction {
+    .search-results-sort .sort-direction,
+    .browse-sort .sort-direction {
         cursor: pointer;
         display: none;
     }
-    .search-results-sort .sort-direction:hover {
+    .search-results-sort .sort-direction:hover,
+    .browse-sort .sort-direction:hover {
         background-color: 1px solid #efefef;
     }
-    .search-results-sort .sort-field:hover .sort-direction {
+    .search-results-sort .sort-field:hover .sort-direction,
+    .browse-sort .sort-field:hover .sort-direction {
         display: block;
     }
-    .search-results-sort .sort-direction.sort-active {
+    .search-results-sort .sort-direction.sort-active,
+    .browse-sort .sort-direction.sort-active {
         display: block;
     }
     .search-view-type {

@@ -18,11 +18,11 @@
             <div class="sort-field">
                 <span class="sort-label"><?php echo $labels[$field]; ?></span>
                 <div class="sort-directions">
-                    <?php foreach ($link as $l): ?>
-                        <div class="sort-direction sort-<?php echo $l['direction']; ?> <?php echo $l['active'] ? 'sort-active' : ''; ?>" data-name="<?php echo $l['name']; ?>" $>
-                            <img src="<?php echo $this->assetUrl('img/sort-' . $l['direction'] . '.svg'); ?>"/>
-                        </div>
-                    <?php endforeach; ?>
+                <?php foreach ($link as $l): ?>
+                    <div class="sort-direction sort-<?php echo $l['direction']; ?> <?php echo $l['active'] ? 'sort-active' : ''; ?>" data-name="<?php echo $l['name']; ?>">
+                        <img src="<?php echo $this->assetUrl('img/sort-' . $l['direction'] . '.svg'); ?>" />
+                    </div>
+                <?php endforeach; ?>
                 </div>
             </div>
         <?php endforeach; ?>
@@ -44,7 +44,7 @@
         </script>
     </div>
     <div>
-        <a class="search-view-type search-view-type-grid" href="#"><img src="<?php echo $this->assetUrl('img/grid.svg'); ?>"/></a><!--
-        --><a class="search-view-type search-view-type-list" href="#"><img src="<?php echo $this->assetUrl('img/list.svg'); ?>"/></a>
+        <a class="search-view-type search-view-type-grid" href="#"><img src="<?php echo $this->assetUrl('img/grid.svg'); ?>"/></a>
+        <a class="search-view-type search-view-type-list" href="#"><img src="<?php echo $this->assetUrl('img/list.svg'); ?>"/></a>
     </div>
 </div>

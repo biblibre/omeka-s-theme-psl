@@ -1,7 +1,6 @@
 <?php
 $escape = $this->plugin('escapeHtml');
 $this->htmlElement('body')->appendAttribute('class', 'item resource browse');
-$hasBasket = $this->getHelperPluginManager()->has('updateBasketLink');
 $query = $this->params()->fromQuery();
 if (isset($itemSet)):
     $this->htmlElement('body')->appendAttribute('class', 'item-set');
@@ -10,6 +9,19 @@ endif;
 $headingTerm = $this->siteSetting('browse_heading_property_term', 'dcterms:title');
 $bodyTerm = $this->siteSetting('browse_body_property_term', 'dcterms:description');
 $itemSetShow = isset($itemSet);
+$this->headLink()->appendStylesheet($this->assetUrl('css/search.css', 'Search'));
+$this->headScript()->appendFile($this->assetUrl('js/search.js', 'Search'));
+$totalCount = $this->pagination()->getPaginator()->getTotalCount();
+$sortHeadings = [
+    [
+        'label' => $this->translate('Title'),
+        'value' => 'dcterms:title'
+    ],
+    [
+        'label' => $this->translate('Date'),
+        'value' => 'dcterms:date'
+    ],
+];
 ?>
 
 <?php if ($itemSetShow): ?>
@@ -24,27 +36,71 @@ $itemSetShow = isset($itemSet);
     <?php echo $this->pageTitle($this->translate('Items'), 2); ?>
 <?php endif; ?>
 
+<?php echo $this->SearchForm(); ?>
+
 <?php echo $this->searchFilters(); ?>
 <?php echo $this->hyperlink($this->translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?>
 <?php $this->trigger('view.browse.before'); ?>
-<ul class="resource-list">
-<?php
-foreach ($items as $item):
-    $heading = $item->value($headingTerm, ['default' => $this->translate('[Untitled]')]);
-    $body = $item->value($bodyTerm);
-?>
-    <li class="item resource">
-        <?php if ($primaryMedia = $item->primaryMedia()): ?>
-        <?php echo $item->linkRaw($this->thumbnail($item, 'medium')); ?>
+
+<div class="search-results-wrapper">
+    <div class="search-results">
+        <?php if ($totalCount): ?>
+            <?php
+                echo $this->partial('common/resource-header', [
+                    'sortHeadings' => $sortHeadings,
+                ]);
+            ?>
+
+            <?php
+            echo $this->partial('common/resource-list', [
+                'title' => sprintf($this->translatePlural('%s item', '%s items', $totalCount), $totalCount),
+                'resources' => $resources,
+            ]);
+            ?>
+
+            <?php
+                echo $this->partial('common/resource-footer', [
+                    'resources' => $resources,
+                ]);
+            ?>
+        <?php else: ?>
+            <div class="noresults"><?php echo $this->translate('No items.'); ?></div>
         <?php endif; ?>
-        <h4><a href="<?php echo $this->ResourceUrl($item); ?>"><?php echo $item->displayTitle(); ?></a></h4>
-        <?php if ($hasBasket) echo $this->updateBasketLink($item); ?>
-        <?php if ($body): ?>
-        <div class="description"><?php echo $body; ?></div>
-        <?php endif; ?>
-    </li>
-<?php endforeach; ?>
-</ul>
-<?php echo ($itemSetShow) ? '</div>' : ''; ?>
-<?php echo $this->pagination(); ?>
+    </div>
+
+    <?php // echo $this->partial('search/facets', ['facets' => $facets]); ?>
+</div>
+
 <?php $this->trigger('view.browse.after'); ?>
+
+<?php if ($itemSetShow): ?>
+</div>
+<?php endif; ?>
+
+<?php /* TODO Move to js. */ ?>
+<script>
+    $(document).ready(function() {
+        $('.search-results-sort select').on('change', function() {
+            Search.sortBy($(this).val());
+        });
+
+        $('.search-view-type-list').on('click', function(e) {
+            e.preventDefault();
+            Search.setViewType('list');
+            $('.search-view-type').removeClass('active');
+            $(this).addClass('active');
+        });
+        $('.search-view-type-grid').on('click', function(e) {
+            e.preventDefault();
+            Search.setViewType('grid');
+            $('.search-view-type').removeClass('active');
+            $(this).addClass('active');
+        });
+
+        var view_type = localStorage.getItem('search_view_type');
+        if (!view_type) {
+            view_type = 'list';
+        }
+        $('.search-view-type-' + view_type).click();
+    });
+</script>
