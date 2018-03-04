@@ -42,18 +42,11 @@ if ($resourceName === 'item-set') {
 } else {
     $resourceUrl = $this->ResourceUrl($resource);
 }
-?>
 
+?>
 <div class="<?php echo $resourceName; ?> resource">
     <div class="resource-thumbnail">
-        <?php
-            if ($resourceName === 'media') {
-                $media = $resource;
-            } else {
-                $media = $resource->primaryMedia();
-            }
-        ?>
-
+        <?php $media = $resourceName === 'media' ? $resource : $resource->primaryMedia(); ?>
         <?php if ($media): ?>
             <a href="<?php echo $escape($resourceUrl); ?>">
                 <img
@@ -66,7 +59,7 @@ if ($resourceName === 'item-set') {
     </div>
     <div class="resource-metadata">
         <h4>
-            <?php if (in_array($resourceName, ['item', 'media']) && $hasBasket): ?>
+            <?php if ($hasBasket && in_array($resourceName, ['item', 'media'])): ?>
                 <?php echo $this->updateBasketLink($resource); ?>
             <?php endif; ?>
             <a href="<?php echo $escape($resourceUrl); ?>"><?php echo $resource->value($headingTerm, ['default' => $this->translate('[Untitled]')]); ?></a>
