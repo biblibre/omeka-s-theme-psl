@@ -1,12 +1,25 @@
-<?php $escape = $this->plugin('escapeHtml'); ?>
-<?php $this->htmlElement('body')->appendAttribute('class', 'item resource show'); ?>
+<?php
+$escape = $this->plugin('escapeHtml');
+$this->htmlElement('body')->appendAttribute('class', 'item resource show');
+$itemMedia = $item->media();
+?>
 
 <div id="content" role="navigation">
     <?php echo $this->pageTitle($item->displayTitle(), 2); ?>
 
-    <?php if ($item->media()): ?>
+    <?php if ($itemMedia): ?>
     <div class="psl_uv">
-        <?php echo $this->universalViewer($item); ?>
+        <?php if ($this->getHelperPluginManager()->has('universalViewer')): ?>
+            <?php echo $this->universalViewer($item); ?>
+        <?php else: ?>
+            <div class="media-embeds">
+            <?php
+            foreach ($itemMedia as $media):
+                echo $media->render();
+            endforeach;
+            ?>
+            </div>
+        <?php endif; ?>
     </div>
     <div class="resource-metadata-wrapper">
         <div class="resource-metadata">
@@ -17,7 +30,7 @@
 
     <div class="media-list-wrapper">
         <div class="media-list">
-            <?php foreach ($item->media() as $media): ?>
+            <?php foreach ($itemMedia as $media): ?>
                 <a href="<?php echo $media->url(); ?>" class="media resource">
                     <img src="<?php echo $escape($media->thumbnailUrl('square')); ?>" title="<?php echo $escape($media->displayTitle()); ?>">
                 </a>
