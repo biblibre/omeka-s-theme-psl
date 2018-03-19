@@ -2,6 +2,15 @@
 $escape = $this->plugin('escapeHtml');
 $this->htmlElement('body')->appendAttribute('class', 'item resource show');
 $itemMedia = $item->media();
+// UniversalViewer can't display html, so when there is an html media, use
+// default render for all files.
+$hasHtmlMedia = false;
+foreach ($itemMedia as $media):
+    if ($media->renderer() === 'html'):
+        $hasHtmlMedia = true;
+        break;
+    endif;
+endforeach;
 ?>
 
 <div id="content" role="navigation">
@@ -9,7 +18,7 @@ $itemMedia = $item->media();
 
     <?php if ($itemMedia): ?>
     <div class="psl_uv">
-        <?php if ($this->getHelperPluginManager()->has('universalViewer')): ?>
+        <?php if (!$hasHtmlMedia && $this->getHelperPluginManager()->has('universalViewer')): ?>
             <?php echo $this->universalViewer($item); ?>
         <?php else: ?>
             <div class="media-embeds">
