@@ -19,6 +19,7 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
 <?php echo $this->htmlElement('html'); ?>
     <head>
         <?php echo $this->headMeta(); ?>
+        <link rel="shortcut icon" href="<?php echo $this->assetUrl('img/favicon.ico'); ?>" type="image/x-icon" />
         <?php echo $this->headTitle(); ?>
         <?php echo $this->headLink(); ?>
         <?php echo $this->headStyle(); ?>
