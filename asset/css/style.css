@@ -105,10 +105,11 @@
     input[type="password"],
     input[type="email"],
     input[type="url"] {
-        -moz-appearance: none;
         -webkit-appearance: none;
-        -moz-border-radius: 0px;
+        -moz-appearance: none;
+        appearance: none;
         -webkit-border-radius: 0px;
+        -moz-border-radius: 0px;
         border-radius: 0px;
         height: 2.25em;
         border-color: rgba(0, 0, 0, 0.15);
@@ -299,15 +300,15 @@
         border-radius: 2px;
         padding: 7.5px;
         display: inline-block;
-        appearance: none;
         -webkit-appearance: none;
         -moz-appearance: none;
+        appearance: none;
         border: 0;
         cursor: pointer;
     }
     .remove-value {
         background-color: #dedede;
-    text-indent: -9999px;
+        text-indent: -9999px;
         position: relative;
         width: 45px;
         margin-left: 7.5px;
@@ -422,6 +423,8 @@
         background-color: rgb(228, 73, 17);
         color: white;
         margin-top: 55px;
+        padding: 1px 6px;
+        font-size: 20px;
     }
     #psl-search-form {
         border: 1px solid rgb(188, 188, 188);
