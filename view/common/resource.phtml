@@ -29,7 +29,7 @@
 ?>
 
 <?php
-$escape = $this->plugin('escapeHtml');
+$hyperlink = $this->plugin('hyperlink');
 // The controller name is used to simplify compatibility with default themes (javascript and css that use default classes).
 $resourceName = $resource->getControllerName();
 $searchPageId = $this->themeSetting('search_page_id');
@@ -46,15 +46,12 @@ if ($resourceName === 'item-set') {
 ?>
 <div class="<?php echo $resourceName; ?> resource">
     <div class="resource-thumbnail">
-        <?php $media = $resourceName === 'media' ? $resource : $resource->primaryMedia(); ?>
+        <?php $media = $resource->primaryMedia(); ?>
         <?php if ($media): ?>
-            <a href="<?php echo $escape($resourceUrl); ?>">
-                <img
-                    src="<?php echo $escape($media->thumbnailUrl('square')); ?>"
-                    title="<?php echo $escape($media->displayTitle()); ?>"
-                    alt="<?php echo $escape($media->mediaType()); ?> thumbnail"
-                />
-            </a>
+            <?php echo $hyperlink->raw(
+                $this->thumbnail($media, 'square', ['title' => $media->displayTitle(), 'alt' => $media->mediaType() . ' thumbnail']),
+                $resource->url()
+            ); ?>
         <?php endif; ?>
     </div>
     <div class="resource-metadata">
@@ -62,7 +59,7 @@ if ($resourceName === 'item-set') {
             <?php if ($hasBasket && in_array($resourceName, ['item', 'media'])): ?>
                 <?php echo $this->updateBasketLink($resource); ?>
             <?php endif; ?>
-            <a href="<?php echo $escape($resourceUrl); ?>"><?php echo $resource->value($headingTerm, ['default' => $this->translate('[Untitled]')]); ?></a>
+            <?php echo $hyperlink($resource->value($headingTerm, ['default' => $this->translate('[Untitled]')]), $resourceUrl); ?>
         </h4>
         <?php if ($resourceName === 'item-set'): ?>
             <div class="items-count">
