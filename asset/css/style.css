@@ -131,25 +131,25 @@
         display: -ms-flexbox;
         display: -webkit-box;
         display: flex;
-        -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
         margin: 1em 0;
     }
     .field .field-meta {
-        display: block;
-        align-items: center;
-        width: 30%;
         padding-right: 1em;
+        display: flex;
+        align-items: center;
     }
-    .field .collapsible {
+    #advanced-search .field .field-meta {
+        width: 30%;
+    }
+    #advanced-search .field .inputs {
+        width: 70%;
+        padding-left: 1.69492%;
+    }
+    #advanced-search .field .collapsible {
         font-size: 13.5px;
         display: block;
         clear: both;
         line-height: 18px;
-    }
-    .field .inputs {
-        width: 70%;
-        padding-left: 1.69492%;
     }
 
     /* Header */
@@ -266,37 +266,46 @@
 
     /* Advanced Search */
 
-    .field .field-meta {
+    #advanced-search .field .field-meta {
         font-size: 1.2em;
     }
 
-    input[type="text"],
-    input[type="password"],
-    input[type="email"],
-    input[type="url"],
-    textarea {
+    #advanced-search select,
+    #advanced-search input[type="text"],
+    #advanced-search input[type="password"],
+    #advanced-search input[type="email"],
+    #advanced-search input[type="url"],
+    #advanced-search textarea {
+        /*
         -webkit-appearance: none;
         -moz-appearance: none;
         appearance: none;
+        */
         border-radius: 0;
         height: 45px;
+        /*
         border: 1px solid #dedede;
+        */
         padding: 6.5px 1.69492%;
         margin: 0;
     }
-    input,
-    textarea,
-    button,
-    .button,
-    select {
+    #advanced-search select[multiple] {
+        height: inherit;
+        min-width: 50%
+    }
+    #advanced-search input,
+    #advanced-search textarea,
+    #advanced-search button,
+    #advanced-search .button,
+    #advanced-search select {
         font-size: 1.2em;
         line-height: 30px;
         margin: 0;
         vertical-align: top;
     }
-    button,
-    a.button,
-    [type="submit"] {
+    #advanced-search button,
+    #advanced-search a.button,
+    #advanced-search [type="submit"] {
         border-radius: 2px;
         padding: 7.5px;
         display: inline-block;
