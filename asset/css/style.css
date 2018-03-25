@@ -150,6 +150,7 @@
         width: 70%;
         padding-left: 1.69492%;
     }
+
     /* Header */
 
     body > header {
@@ -1126,4 +1127,9 @@ div.psl_uv {
     justify-content: flex-end;
     margin-bottom: 2em;
     margin-top: 2em;
+}
+
+video {
+    max-height: 100%;
+    max-width: 100%;
 }
