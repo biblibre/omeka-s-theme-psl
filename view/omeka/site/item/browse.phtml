@@ -70,32 +70,3 @@ $sortHeadings = [
 <?php if ($itemSetShow): ?>
 </div>
 <?php endif; ?>
-
-<?php /* TODO Move to js. */ ?>
-<script>
-    $(document).ready(function() {
-        $('.browse-sort select').on('change', function() {
-            Search.sortBy($(this).val());
-        });
-
-        $('.browse-view-type-list').on('click', function(e) {
-            e.preventDefault();
-            Search.setViewType('list');
-            $('.browse-view-type').removeClass('active');
-            $(this).addClass('active');
-        });
-
-        $('.browse-view-type-grid').on('click', function(e) {
-            e.preventDefault();
-            Search.setViewType('grid');
-            $('.browse-view-type').removeClass('active');
-            $(this).addClass('active');
-        });
-
-        var view_type = localStorage.getItem('search_view_type');
-        if (!view_type) {
-            view_type = 'list';
-        }
-        $('.browse-view-type-' + view_type).click();
-    });
-</script>

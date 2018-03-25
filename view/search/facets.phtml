@@ -68,17 +68,3 @@
         </div>
     <?php endif; ?>
 </aside>
-
-<script>
-    $(document).ready(function() {
-        $('.search-sidebar > ul a').on('click', function(e) {
-            e.preventDefault();
-
-            $('.search-sidebar > div').hide();
-            $('.search-sidebar > ul a').removeClass('active');
-
-            $($(this).attr('href')).show();
-            $(this).addClass('active');
-        }).first().click();
-    });
-</script>

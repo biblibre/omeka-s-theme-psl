@@ -52,27 +52,7 @@ endforeach;
     ]); ?>
 </div>
 
+<?php // TODO Move to custom.js. ?>
 <script>
-    $(document).ready(function() {
-        var mediaList = $('div.media-list');
-        if (mediaList.length) {
-            $('<a>')
-                .addClass('media-list-toggle')
-                .html(<?php echo json_encode($this->translate('Access to files')); ?>)
-                .on('click', function(e) {
-                    e.preventDefault();
-                    if (mediaList.is(':visible')) {
-                        mediaList.hide();
-                        $(this).removeClass('media-list-visible');
-                        $(this).addClass('media-list-hidden');
-                    } else {
-                        mediaList.show();
-                        $(this).removeClass('media-list-hidden');
-                        $(this).addClass('media-list-visible');
-                    }
-                })
-                .insertBefore(mediaList)
-                .trigger('click');
-        }
-    });
+    var translateAccessToFiles = <?php echo json_encode($this->translate('Access to files')); ?>;
 </script>
