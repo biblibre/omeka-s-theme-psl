@@ -38,13 +38,15 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
             <a href="<?php echo $site->url(); ?>" class="site-title"><?php echo $this->pageTitle($site->title()); ?></a>
             <?php endif; ?>
 
+            <?php if ($this->themeSetting('display_main_menu')): ?>
             <nav>
                 <?php
                 echo $site->publicNav()->menu()->renderMenu(null, [
-                    'maxDepth' => $this->themeSetting('nav_depth') - 1
+                    'maxDepth' => $this->themeSetting('nav_depth') - 1,
                 ]);
                 ?>
             </nav>
+            <?php endif; ?>
 
             <div class="user-links">
                 <?php $identity = $this->identity(); ?>
