@@ -922,7 +922,8 @@
         /*display: inline-block;*/
         /* width: 600px;*/
         float: right;
-        width: 46%;
+        /* width: 46%; */
+        width: 50%;
     }
     .resource-metadata-wrapper::after {
         content: '';
@@ -1152,15 +1153,6 @@
 
 /* classes PSL*/
 
-div.psl_item {
-    overflow: hidden;
-    width: 100%;
-}
-div.psl_uv {
-    width: 53%;
-    float: left;
-}
-
 .resource.browse .advanced-search {
     display: flex;
     justify-content: flex-end;
@@ -1168,6 +1160,15 @@ div.psl_uv {
     margin-top: 2em;
 }
 
+div.psl_item {
+    overflow: hidden;
+    width: 100%;
+}
+div.psl_uv {
+    /* width: 53%; */
+    width: 50%;
+    float: left;
+}
 video {
     max-height: 100%;
     max-width: 100%;
