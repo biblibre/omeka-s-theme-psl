@@ -10,10 +10,10 @@
                     'name' => $name,
                     'active' => ($query->getSort() === $name),
                 ];
-                $labels[$field] = $label;
+                $labels[$field] = $this->translate($label);
             }
         ?>
-        <span><?php echo $this->translate('Sort mode'); ?></span>
+        <span><?php echo $this->translate('Sort by'); ?></span>
         <?php foreach($links as $field => $link): ?>
             <div class="sort-field">
                 <span class="sort-label"><?php echo $labels[$field]; ?></span>
