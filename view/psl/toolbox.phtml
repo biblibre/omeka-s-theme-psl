@@ -1,4 +1,4 @@
-<?php $this->headScript()->appendFile($this->assetUrl('js/toolbox.js')); ?>
+<?php $this->headScript()->appendFile($this->assetUrl('js/custom.js')); ?>
 <?php $hasBasket = $this->getHelperPluginManager()->has('updateBasketLink'); ?>
 <?php $ark = $this->getHelperPluginManager()->has('ark') ? $this->ark($resource)->getAbsoluteUrl(): null; ?>
 <?php $isMedia = $resource->resourceName() === 'media'; ?>
