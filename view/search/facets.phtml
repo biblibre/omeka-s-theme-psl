@@ -36,10 +36,10 @@
 <aside class="search-sidebar">
     <ul>
         <?php if (isset($itemSet)): ?>
-            <li><a href="#about-itemset">À propos</a></li>
+            <li><a href="#about-itemset"><?php echo $this->translate('About'); ?></a></li>
         <?php endif; ?>
         <?php if (!empty($facets)): ?>
-            <li><a href="#search-facets">Filtres</a></li>
+            <li><a href="#search-facets"><?php echo $this->translate('Filters'); ?></a></li>
         <?php endif; ?>
     </ul>
 
@@ -54,7 +54,7 @@
             <ul>
                 <?php foreach ($facets as $name => $facetValues): ?>
                     <li class="search-facet">
-                        <h3><?php echo $this->facetLabel($name); ?></h3>
+                        <h3><?php echo $this->translate($this->facetLabel($name)); ?></h3>
                         <ul class="search-facet-items">
                             <?php foreach ($facetValues as $facetValue): ?>
                                 <li class="search-facet-item">
