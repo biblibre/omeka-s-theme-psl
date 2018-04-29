@@ -36,7 +36,8 @@
 <aside class="search-sidebar">
     <ul>
         <?php if (isset($itemSet)): ?>
-            <li><a href="#about-itemset"><?php echo $this->translate('About'); ?></a></li>
+            <?php /* ?><li><a href="#about-itemset"><?php echo $this->translate('About'); ?></a></li> // TODO Translate */ ?>
+            <li><a href="#about-itemset"><?php echo $this->translate('À propos'); ?></a></li>
         <?php endif; ?>
         <?php if (!empty($facets)): ?>
             <li><a href="#search-facets"><?php echo $this->translate('Filters'); ?></a></li>
