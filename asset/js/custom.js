@@ -159,7 +159,7 @@ $(document).ready(function() {
 
     var viewType = localStorage.getItem('basket_view_type');
     if (!viewType) {
-        viewType = 'list';
+        viewType = 'grid';
     }
     setViewType(viewType);
 
