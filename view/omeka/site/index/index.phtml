@@ -45,7 +45,11 @@ $itemSets = $this->api()->search('item_sets', [
     <header>
         <h2><?php echo $this->translate('Item sets'); ?></h2>
         <div class="ruler"></div>
-        <a href="<?php echo $collectionsUrl; ?>"><img src="<?php echo $this->assetUrl('img/bullet.svg'); ?>"/> <?php echo $this->translate('All collections'); ?></a>
+        <a href="<?php echo $collectionsUrl; ?>">
+            <img src="<?php echo $this->assetUrl('img/bullet.svg'); ?>"/>
+            <?php /* echo $this->translate('All collections'); // TODO Translate */ ?>
+            <?php echo $this->translate('Toutes les collections'); ?>
+        </a>
     </header>
     <main><?php // TODO Remove <main> from here. ?>
         <?php echo $this->partial('psl/item-sets', [
