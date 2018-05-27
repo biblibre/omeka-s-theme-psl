@@ -1,4 +1,7 @@
-<?php $escape = $this->plugin('escapeHtml'); ?>
+<?php
+/** @var \Omeka\Api\Representation\ItemRepresentation $items */
+$escape = $this->plugin('escapeHtml');
+?>
 <?php $this->htmlElement('body')->appendAttribute('class', 'item-set show'); ?>
 
 <?php $this->trigger('view.show.before'); ?>
@@ -24,7 +27,7 @@
                     alt="<?php echo $escape($primaryMedia->mediaType()); ?> thumbnail"
                 >
                 <?php endif; ?>
-                <h4><a href="<?php echo $this->ResourceUrl($item); ?>"><?php echo $item->displayTitle(); ?></a></h4>
+                <h4><?php echo $item->link($item->displayTitle()); ?></a></h4>
                 <?php if ($description = $item->displayDescription()): ?>
                 <div class="description"><?php echo $description; ?></div>
                 <?php endif; ?>

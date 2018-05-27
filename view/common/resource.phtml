@@ -40,7 +40,7 @@ if ($resourceName === 'item-set') {
         ? $this->url('search-page-' . $searchPageId, [], ['query' => ['itemSet' => ['ids' => [$resource->id()]]]], true)
         : $this->url('site/resource/id', ['controller' => 'item-set', 'action' => 'show', 'id' => $resource->id()], [], true);
 } else {
-    $resourceUrl = $this->ResourceUrl($resource);
+    $resourceUrl = $resource->url();
 }
 
 ?>
