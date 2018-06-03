@@ -29,11 +29,12 @@
 ?>
 
 <?php
+$translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
 $this->htmlElement('body')->appendAttribute('class', 'search');
 $this->headLink()->appendStylesheet($this->assetUrl('css/search.css', 'Search'));
 $this->headScript()->appendFile($this->assetUrl('js/search.js', 'Search'));
-$this->headTitle($this->translate('Search'), \Zend\View\Helper\Placeholder\Container\AbstractContainer::PREPEND);
+$this->headTitle($translate('Search'), \Zend\View\Helper\Placeholder\Container\AbstractContainer::PREPEND);
 ?>
 
 <?php if (empty($isPartial)): ?>
@@ -80,7 +81,7 @@ $this->headTitle($this->translate('Search'), \Zend\View\Helper\Placeholder\Conta
                         ]);
                     ?>
                 <?php else: ?>
-                    <div class="noresults"><?php echo $this->translate('Your query returned no results'); ?></div>
+                    <div class="noresults"><?php echo $translate('Your query returned no results'); ?></div>
                 <?php endif; ?>
             </div>
 

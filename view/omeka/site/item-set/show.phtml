@@ -1,5 +1,6 @@
 <?php
 /** @var \Omeka\Api\Representation\ItemRepresentation $items */
+$translate = $this->plugin('translate');
 $escape = $this->plugin('escapeHtml');
 ?>
 <?php $this->htmlElement('body')->appendAttribute('class', 'item-set show'); ?>
@@ -12,10 +13,10 @@ $escape = $this->plugin('escapeHtml');
     <?php if ($itemCount > 0): ?>
     <div class="items">
         <?php if ($itemCount < 5): ?>
-        <h3><?php echo sprintf($this->translate('All items (%s)'), $itemCount); ?></h3>
+        <h3><?php echo sprintf($translate('All items (%s)'), $itemCount); ?></h3>
         <?php else: ?>
-        <h3><?php echo $this->translate('Recent items'); ?></h3>
-        <?php echo $this->hyperlink($this->translate('Show all items of the item set'), $this->url('site/resource', ['site-slug' => $site->slug(), 'controller' => 'item', 'action' => 'browse'], ['query' => ['item_set_id' => $itemSet->id()]])); ?>
+        <h3><?php echo $translate('Recent items'); ?></h3>
+        <?php echo $this->hyperlink($translate('Show all items of the item set'), $this->url('site/resource', ['site-slug' => $site->slug(), 'controller' => 'item', 'action' => 'browse'], ['query' => ['item_set_id' => $itemSet->id()]])); ?>
         <?php endif; ?>
         <ul class="resource-list">
             <?php foreach ($items as $item): ?>
