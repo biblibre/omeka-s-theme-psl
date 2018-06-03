@@ -27,16 +27,16 @@
  */
 ?>
 
+<?php $results = $response->getResults($resourceName); ?>
+<?php if (count($results)): ?>
 <?php
 $headingTerm = $this->siteSetting('browse_heading_property_term', 'dcterms:title');
 $bodyTerm = $this->siteSetting('browse_body_property_term', 'dcterms:description');
 $bodyTerms = $this->siteSetting('browse_body_property_terms', [$bodyTerm]);
 ?>
-<?php $results = $response->getResults($resourceName); ?>
-<?php if (!empty($results)): ?>
     <?php
         $itemSets = $this->params()->fromQuery('itemSet');
-        if (count($itemSets['ids']) == 1) {
+        if ($itemSets && count($itemSets['ids']) == 1) {
             $itemSet = $this->api()->read('item_sets', $itemSets['ids'][0])->getContent();
             $title = $itemSet->displayTitle() . ' : ' . $title;
         }

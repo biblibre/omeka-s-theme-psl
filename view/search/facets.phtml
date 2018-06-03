@@ -29,7 +29,7 @@
 
 <?php
     $itemSets = $this->params()->fromQuery('itemSet');
-    if (count($itemSets['ids']) == 1) {
+    if ($itemSets && count($itemSets['ids']) == 1) {
         $itemSet = $this->api()->read('item_sets', $itemSets['ids'][0])->getContent();
     }
 ?>
