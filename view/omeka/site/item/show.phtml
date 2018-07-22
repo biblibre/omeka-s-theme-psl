@@ -15,6 +15,7 @@ endforeach;
 
 <div id="content" role="navigation">
     <?php echo $this->pageTitle($item->displayTitle(), 2); ?>
+    <?php $this->trigger('view.show.before'); ?>
 
     <?php if ($itemMedia): ?>
     <div class="psl_uv">
@@ -50,6 +51,8 @@ endforeach;
     <?php echo $this->partial('psl/toolbox', [
         'resource' => $item,
     ]); ?>
+
+    <?php $this->trigger('view.show.after'); ?>
 </div>
 
 <?php // TODO Move to custom.js. ?>
