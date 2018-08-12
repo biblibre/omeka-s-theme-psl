@@ -38,12 +38,12 @@ if ($itemSets && count($itemSets['ids']) == 1) {
 ?>
 <aside class="search-sidebar">
     <ul>
+        <?php if (!empty($facets)): ?>
+            <li><a href="#search-facets"><?php echo $translate('Filters'); ?></a></li>
+        <?php endif; ?>
         <?php if (isset($itemSet)): ?>
             <?php /* ?><li><a href="#about-itemset"><?php echo $translate('About'); ?></a></li> // TODO Translate */ ?>
             <li><a href="#about-itemset"><?php echo $translate('À propos'); ?></a></li>
-        <?php endif; ?>
-        <?php if (!empty($facets)): ?>
-            <li><a href="#search-facets"><?php echo $translate('Filters'); ?></a></li>
         <?php endif; ?>
     </ul>
 
