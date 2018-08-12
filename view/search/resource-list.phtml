@@ -32,7 +32,8 @@
 <?php
 $headingTerm = $this->siteSetting('browse_heading_property_term', 'dcterms:title');
 $bodyTerm = $this->siteSetting('browse_body_property_term', 'dcterms:description');
-$bodyTerms = $this->siteSetting('browse_body_property_terms', [$bodyTerm]);
+$bodyTerms = $this->themeSetting('browse_body_property_terms', [$bodyTerm]);
+
 ?>
     <?php
         $itemSets = $this->params()->fromQuery('itemSet');
