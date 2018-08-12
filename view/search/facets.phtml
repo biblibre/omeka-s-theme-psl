@@ -32,9 +32,9 @@
 $translate = $this->plugin('translate');
 
 $itemSets = $this->params()->fromQuery('itemSet');
-if ($itemSets && count($itemSets['ids']) == 1) {
+if (!empty($itemSets['ids'][0]) && count($itemSets['ids']) == 1):
     $itemSet = $this->api()->read('item_sets', $itemSets['ids'][0])->getContent();
-}
+endif;
 ?>
 <aside class="search-sidebar">
     <ul>

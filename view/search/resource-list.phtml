@@ -1,6 +1,7 @@
 <?php
 /*
  * Copyright BibLibre, 2016
+ * Copyright Daniel Berthereau, 2018
  *
  * This software is governed by the CeCILL license under French law and abiding
  * by the rules of distribution of free software.  You can use, modify and/ or
@@ -37,10 +38,10 @@ $bodyTerms = $this->themeSetting('browse_body_property_terms', [$bodyTerm]);
 ?>
     <?php
         $itemSets = $this->params()->fromQuery('itemSet');
-        if ($itemSets && count($itemSets['ids']) == 1) {
+        if (!empty($itemSets['ids'][0]) && count($itemSets['ids']) == 1):
             $itemSet = $this->api()->read('item_sets', $itemSets['ids'][0])->getContent();
             $title = $itemSet->displayTitle() . ' : ' . $title;
-        }
+        endif;
     ?>
     <h3><?php echo $title; ?></h3>
 
