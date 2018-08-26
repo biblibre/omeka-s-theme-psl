@@ -8,13 +8,14 @@ class SearchForm extends AbstractHelper
     public function __invoke()
     {
         $view = $this->getView();
-        $pluginManager = $view->getHelperPluginManager();
 
-        if ($pluginManager->has('searchForm')) {
-            $searchPageId = $view->themeSetting('search_page_id');
-            if ($searchPageId) {
-                $searchPage = $view->api()->read('search_pages', $searchPageId)->getContent();
-                return $view->searchForm($searchPage);
+        if ($view->getHelperPluginManager()->has('searchForm')) {
+            $searchMainPage = $view->siteSetting('search_main_page');
+            if ($searchMainPage) {
+                $searchPage = $view->api()->searchOne('search_pages', ['id' => $searchMainPage])->getContent();
+                if ($searchPage) {
+                    return $view->searchForm($searchPage);
+                }
             }
         }
 

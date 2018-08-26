@@ -5,17 +5,12 @@ $translate = $this->plugin('translate');
 <p><?php echo $translate('There is no item sets for this site.'); ?></p>
 <?php else: ?>
 <?php foreach ($itemSets as $itemSet): ?>
-    <?php
-        $itemSetTitle = $itemSet->value('dcterms:alternative', ['type' => 'literal']);
-        if (!isset($itemSetTitle)) {
-            $itemSetTitle = $itemSet->displayTitle();
-        }
-    ?>
+    <?php $itemSetTitle = $itemSet->value('dcterms:alternative', ['type' => 'literal']) ?: $itemSet->displayTitle(); ?>
     <div class="item-set resource collection">
         <?php
-        $searchPageId = $this->themeSetting('search_page_id');
-        $url = $searchPageId
-            ? $this->url('search-page-' . $searchPageId, [], ['query' => ['itemSet' => ['ids' => [$itemSet->id()]]]], true)
+        $searchMainPage = $this->siteSetting('search_main_page');
+        $url = $searchMainPage
+            ? $this->url('search-page-' . $searchMainPage, [], ['query' => ['itemSet' => ['ids' => [$itemSet->id()]]]], true)
             : $this->url('site/resource-id', ['controller' => 'item-set', 'action' => 'show', 'id' => $itemSet->id()], [], true);
         $media = $itemSet->primaryMedia();
         ?>

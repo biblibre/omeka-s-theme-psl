@@ -31,9 +31,9 @@ $itemSets = $this->api()->search('item_sets', [
 
 ?>
 <?php if (!empty($itemSets)): ?>
-    <?php $searchPageId = $this->themeSetting('search_page_id');
-    if ($searchPageId):
-        $collectionsUrl = $this->url('search-page-' . $searchPageId, [], [
+    <?php $searchMainPage = $this->siteSetting('search_main_page');
+    if ($searchMainPage):
+        $collectionsUrl = $this->url('search-page-' . $searchMainPage, [], [
             'query' => [
                 'resource_type' => 'item_sets',
             ],
