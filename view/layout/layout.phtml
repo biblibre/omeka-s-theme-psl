@@ -70,10 +70,10 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
         </nav>
 
         <?php if (empty($isHomePage)): ?>
-            <?php echo $this->SearchForm(); ?>
+            <?php echo $this->SearchingForm(); ?>
         <?php else: ?>
         <div id="search-form-wrapper">
-            <?php echo $this->SearchForm(); ?>
+            <?php echo $this->SearchingForm(); ?>
         </div>
         <?php endif; ?>
 

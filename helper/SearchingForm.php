@@ -3,7 +3,7 @@ namespace OmekaTheme\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 
-class SearchForm extends AbstractHelper
+class SearchingForm extends AbstractHelper
 {
     public function __invoke()
     {
