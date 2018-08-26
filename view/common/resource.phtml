@@ -59,7 +59,7 @@ if ($resourceName === 'item-set') {
             <?php if ($hasBasket && in_array($resourceName, ['item', 'media'])): ?>
                 <?php echo $this->updateBasketLink($resource); ?>
             <?php endif; ?>
-            <?php echo $hyperlink($resource->value($headingTerm, ['default' => $this->translate('[Untitled]')]), $resourceUrl); ?>
+            <?php echo $hyperlink($resource->value($headingTerm, ['default' => $translate('[Untitled]')]), $resourceUrl); ?>
         </h4>
         <?php if ($resourceName === 'item-set'): ?>
             <div class="items-count">

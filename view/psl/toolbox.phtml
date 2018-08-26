@@ -24,13 +24,13 @@ $translate = $this->plugin('translate');
     </ul>
     <?php if ($ark): ?>
     <div id="psl-toolbox-share">
-        <label><?php echo $this->translate('Permalink'); ?></label>
+        <label><?php echo $translate('Permalink'); ?></label>
         <a href="<?php echo $ark; ?>"><?php echo $ark; ?></a>
     </div>
     <?php endif; ?>
     <?php if ($isMedia): ?>
         <div id="psl-toolbox-download">
-            <label><?php echo $this->translate('Original file:'); ?></label>
+            <label><?php echo $translate('Original file:'); ?></label>
             <a href="<?php echo $resource->originalUrl(); ?>"><?php echo $resource->filename(); ?></a>
         </div>
     <?php endif; ?>

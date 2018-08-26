@@ -53,15 +53,15 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
                 <?php $identity = $this->identity(); ?>
                 <?php if ($identity): ?>
                     <?php if ($this->getHelperPluginManager()->has('showBasketLink')) echo $this->showBasketLink(); ?>
-                    <a href="<?php echo $this->escapeHtml($this->url('logout')); ?>"><?php echo $this->translate('Logout'); ?></a>
+                    <a href="<?php echo $this->escapeHtml($this->url('logout')); ?>"><?php echo $translate('Logout'); ?></a>
                 <?php else: ?>
-                    <a href="<?php echo $this->escapeHtml($this->url('login', [], ['query' => ['redirect' => $this->url(null, [], true)]])); ?>"><?php echo $this->translate('Login'); ?></a>
+                    <a href="<?php echo $this->escapeHtml($this->url('login', [], ['query' => ['redirect' => $this->url(null, [], true)]])); ?>"><?php echo $translate('Login'); ?></a>
                 <?php endif; ?>
             </div>
         </header>
 
         <nav role="navigation" class="breadcrumbs">
-            <a href="<?php echo $this->url('site', [], true); ?>"><?php echo $this->translate('Home'); ?></a>
+            <a href="<?php echo $this->url('site', [], true); ?>"><?php echo $translate('Home'); ?></a>
             <?php $titleParts = $this->headTitle(); ?>
             <?php if (count($titleParts) > 1): ?>
                 »
@@ -86,7 +86,7 @@ $userBar = $this->partial('common/user-bar', ['site' => $site]);
             <?php if ($footerContent = $this->themeSetting('footer')): ?>
             <?php echo $footerContent; ?>
             <?php else: ?>
-                <?php echo $this->translate('Powered by Omeka S'); ?>
+                <?php echo $translate('Powered by Omeka S'); ?>
             <?php endif; ?>
         </footer>
         <?php echo $this->headScript(); ?>

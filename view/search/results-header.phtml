@@ -13,10 +13,10 @@ $translate = $this->plugin('translate');
                     'name' => $name,
                     'active' => ($query->getSort() === $name),
                 ];
-                $labels[$field] = $this->translate($label);
+                $labels[$field] = $translate($label);
             }
         ?>
-        <span><?php echo $this->translate('Sort by'); ?></span>
+        <span><?php echo $translate('Sort by'); ?></span>
         <?php foreach($links as $field => $link): ?>
             <div class="sort-field">
                 <span class="sort-label"><?php echo $labels[$field]; ?></span>

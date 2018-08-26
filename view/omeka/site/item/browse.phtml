@@ -13,11 +13,11 @@ $this->headScript()->appendFile($this->assetUrl('js/search.js', 'Search'));
 $totalCount = $this->pagination()->getPaginator()->getTotalCount();
 $sortHeadings = [
     [
-        'label' => $this->translate('Title'),
+        'label' => $translate('Title'),
         'value' => 'dcterms:title',
     ],
     [
-        'label' => $this->translate('Date'),
+        'label' => $translate('Date'),
         'value' => 'dcterms:date',
     ],
 ];
@@ -25,18 +25,18 @@ $sortHeadings = [
 
 <?php if ($itemSetShow): ?>
     <?php echo $this->pageTitle($itemSet->displayTitle(), 2); ?>
-    <h3><?php echo $this->translate('Item set'); ?></h3>
+    <h3><?php echo $translate('Item set'); ?></h3>
     <div class="metadata">
         <?php echo $itemSet->displayValues(); ?>
     </div>
     <div class="item-set-items">
-    <?php echo $this->pageTitle($this->translate('Items'), 3); ?>
+    <?php echo $this->pageTitle($translate('Items'), 3); ?>
 <?php else: ?>
-    <?php echo $this->pageTitle($this->translate('Items'), 2); ?>
+    <?php echo $this->pageTitle($translate('Items'), 2); ?>
 <?php endif; ?>
 
 <?php echo $this->searchFilters(); ?>
-<?php echo $this->hyperlink($this->translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?>
+<?php echo $this->hyperlink($translate('Advanced search'), $this->url('site/resource', ['controller' => 'item', 'action' => 'search'], ['query' => $query], true), ['class' => 'advanced-search']); ?>
 <?php $this->trigger('view.browse.before'); ?>
 
 <div class="browse-list-wrapper">
@@ -61,7 +61,7 @@ $sortHeadings = [
                 ]);
             ?>
         <?php else: ?>
-            <div class="noresults"><?php echo $this->translate('No items.'); ?></div>
+            <div class="noresults"><?php echo $translate('No items.'); ?></div>
         <?php endif; ?>
     </div>
 </div>

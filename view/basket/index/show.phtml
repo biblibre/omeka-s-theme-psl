@@ -29,13 +29,13 @@
 <?php
 $translate = $this->plugin('translate');
 ?>
-<?php $this->pageTitle($this->translate('Basket')); ?>
+<?php $this->pageTitle($translate('Basket')); ?>
 
 <div class="basket-header">
     <h2>Panier</h2>
 
     <div class="basket-sort">
-        <span><?php echo $this->translate('Sort mode:'); ?></span>
+        <span><?php echo $translate('Sort mode:'); ?></span>
         <?php echo $this->partial('psl/basket-sort-field', [
             'title' => 'Titre',
             'sort_by' => 'dcterms:title',
@@ -67,7 +67,7 @@ $translate = $this->plugin('translate');
 ?>
 
 <?php if (!empty($items)): ?>
-    <h3><?php echo count($items) == 1 ? $this->translate('1 item') : sprintf($this->translate('%s items'), count($items)); ?></h3>
+    <h3><?php echo count($items) == 1 ? $translate('1 item') : sprintf($translate('%s items'), count($items)); ?></h3>
     <div class="resource-list">
         <?php foreach ($items as $item): ?>
             <?php echo $this->partial('search/resource', ['resource' => $item]); ?>
@@ -76,7 +76,7 @@ $translate = $this->plugin('translate');
 <?php endif; ?>
 
 <?php if (!empty($media)): ?>
-    <h3><?php echo count($media) == 1 ? $this->translate('1 file') : sprintf($this->translate('%s fichiers'), count($media)); ?></h3>
+    <h3><?php echo count($media) == 1 ? $translate('1 file') : sprintf($translate('%s fichiers'), count($media)); ?></h3>
     <div class="resource-list">
         <?php foreach ($media as $medium): ?>
             <?php echo $this->partial('search/resource', ['resource' => $medium]); ?>

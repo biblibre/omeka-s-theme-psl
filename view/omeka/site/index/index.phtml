@@ -44,12 +44,12 @@ $itemSets = $this->api()->search('item_sets', [
 ?>
 <div id="collections">
     <header>
-        <h2><?php echo $this->translate('Item sets'); ?></h2>
+        <h2><?php echo $translate('Item sets'); ?></h2>
         <div class="ruler"></div>
         <a href="<?php echo $collectionsUrl; ?>">
             <img src="<?php echo $this->assetUrl('img/bullet.svg'); ?>"/>
-            <?php /* echo $this->translate('All collections'); // TODO Translate */ ?>
-            <?php echo $this->translate('Toutes les collections'); ?>
+            <?php /* echo $translate('All collections'); // TODO Translate */ ?>
+            <?php echo $translate('Toutes les collections'); ?>
         </a>
     </header>
     <main><?php // TODO Remove <main> from here. ?>
