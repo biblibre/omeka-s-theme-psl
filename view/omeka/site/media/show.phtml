@@ -1,3 +1,6 @@
+<?php
+$translate = $this->plugin('translate');
+?>
 <?php $this->htmlElement('body')->appendAttribute('class', 'media resource show'); ?>
 <?php $pageTitle = $media->item()->displayTitle() . ' : ' . $media->displayTitle(); ?>
 <?php echo $this->pageTitle($pageTitle, 2); ?>

@@ -1,4 +1,7 @@
-<?php $escape = $this->plugin('escapeHtml'); ?>
+<?php
+$translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+?>
 <?php $currentQuery = $this->params()->fromQuery(); ?>
 <div class="browse-sort">
     <span><?php echo $this->translate('Sort mode'); ?></span>
