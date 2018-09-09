@@ -6,24 +6,24 @@ $translate = $this->plugin('translate');
         <?php
             $links = [];
             $labels = [];
-            foreach ($sortOptions as $name => $label) {
-                list($field, $direction) = preg_split('/ /', $name);
+            foreach ($sortOptions as $name => $label):
+                @list($field, $direction) = explode(' ', $name, 2);
                 $links[$field][] = [
                     'direction' => $direction,
                     'name' => $name,
                     'active' => ($query->getSort() === $name),
                 ];
                 $labels[$field] = $translate($label);
-            }
+            endforeach;
         ?>
         <span><?php echo $translate('Sort by'); ?></span>
         <?php foreach($links as $field => $link): ?>
             <div class="sort-field">
                 <span class="sort-label"><?php echo $labels[$field]; ?></span>
                 <div class="sort-directions">
-                <?php foreach ($link as $l): ?>
-                    <div class="sort-direction sort-<?php echo $l['direction']; ?> <?php echo $l['active'] ? 'sort-active' : ''; ?>" data-name="<?php echo $l['name']; ?>">
-                        <img src="<?php echo $this->assetUrl('img/sort-' . $l['direction'] . '.svg'); ?>" />
+                <?php foreach ($link as $lk): ?>
+                    <div class="sort-direction sort-<?php echo $lk['direction']; if ($lk['active']): ?> sort-active<?php endif; ?>" data-name="<?php echo $lk['name']; ?>">
+                        <img src="<?php echo $this->assetUrl('img/sort-' . $lk['direction'] . '.svg'); ?>" />
                     </div>
                 <?php endforeach; ?>
                 </div>
