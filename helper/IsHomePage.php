@@ -12,12 +12,12 @@ class IsHomePage extends AbstractHelper
      */
     public function __invoke()
     {
-        $view = $this->getView();
-
-        $site = $view->currentSite();
+        $site = $this->currentSite();
         if (empty($site)) {
             return false;
         }
+
+        $view = $this->getView();
 
         // Check the alias of the root of Omeka S with rerouting.
         if ($this->isCurrentUrl($view->basePath())) {
@@ -85,5 +85,14 @@ class IsHomePage extends AbstractHelper
         return $absolute
              ? $this->getView()->serverUrl(true)
              : $this->getView()->url(null, [], true);
+    }
+
+    protected function currentSite()
+    {
+        return $this->getView()
+            ->getHelperPluginManager()
+            ->get('Zend\View\Helper\ViewModel')
+            ->getRoot()
+            ->getVariable('site');
     }
 }
