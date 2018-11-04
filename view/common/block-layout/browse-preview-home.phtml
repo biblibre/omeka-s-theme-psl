@@ -1,0 +1,50 @@
+<?php
+/**
+ * @var \Zend\View\Renderer\PhpRenderer $this
+ * @var string $resourceType
+ * @var \Omeka\Api\Representation\AbstractResourceEntityRepresentation[] $resources
+ * @var string $heading
+ * @var string $linkText
+ * @var array $query
+ */
+
+
+if (count($resources)):
+
+$translate = $this->plugin('translate');
+?>
+<div class="preview-block">
+    <header>
+        <?php if ($heading): ?>
+        <h2><?php echo $translate($heading); ?></h2>
+        <?php endif; ?>
+        <div class="ruler"></div>
+        <?php
+            if ($linkText):
+                // Check if module Search is enabled.
+                $searchMainPage = in_array($resourceType, ['item', 'item-set']) && $this->siteSetting('search_main_page');
+                if ($searchMainPage):
+                    $resourceTypes = ['item-set' => 'item_sets', 'item' => 'items', 'media' => 'media'];
+                    $query['resource_type'] = $resourceTypes[$resourceType];
+                    $url = $this->url('search-page-' . $searchMainPage, ['site-slug' => $this->params()->fromRoute('site-slug')], ['query' => $query], true);
+                else:
+                    $url = $this->url('site/resource', ['controller' => $resourceType, 'action' => 'browse', 'site-slug' => $this->params()->fromRoute('site-slug')], ['query' => $query], true);
+                endif;
+            ?>
+        <a href="<?php echo $url; ?>">
+            <img src="<?php echo $this->assetUrl('img/bullet.svg'); ?>"/>
+            <?php echo $translate($linkText); ?>
+        </a>
+        <?php
+            endif;
+        ?>
+    </header>
+    <main><?php // TODO Remove <main> from here. ?>
+        <?php echo $this->partial('omeka/site/resource/list', [
+            'resourceType' => $resourceType,
+            'resources' => $resources,
+        ]); ?>
+    </main>
+</div>
+
+<?php endif; ?>

@@ -552,35 +552,39 @@
         border-bottom-right-radius: 13px;
     }
 
-    #collections > header {
+    .home .preview-block > header {
         display: flex;
         justify-content: space-between;
         align-items: center;
     }
-    #collections > header .ruler {
+    .home .preview-block > header > .ruler {
         flex-grow: 1;
         border-top: 1px solid rgb(188, 188, 188);
         margin: 0 20px;
+        height: 2px;
     }
-    #collections > header a {
+    .home .preview-block > header a {
         white-space: nowrap;
         text-transform: uppercase;
+        height: 1.5em;
+        margin-top: 1.6em;
+        margin-bottom: 1.6em;
     }
-    #collections > header a img {
+    .home .preview-block > header a img {
         vertical-align: middle;
         margin-right: 1em;
     }
-    #collections > main {
+    .home .preview-block > main {
         display: flex;
         flex-wrap: wrap;
         justify-content: flex-start;
     }
-    #collections > main > * {
+    .home .preview-block > main > * {
         flex-basis: 25%;
         padding: 0 10px;
         margin-bottom: 60px;
     }
-    #collections .collection > a {
+    .home .preview-block .resource > a {
         position: relative;
         display: inline-block;
         height: 280px;
@@ -589,24 +593,24 @@
         background-position: center;
         background-color: rgb(188, 188, 187);
     }
-    #collections .collection .collection-title {
+    .home .preview-block .resource .dcterms-title {
         width: 60%;
         position: absolute;
         bottom: -40px;
         right: 0;
     }
-    #collections .collection .collection-title::after {
+    .home .preview-block .resource .dcterms-title::after {
         content: '';
         display: block;
         border-right: 169px solid transparent;
         border-top: 40px solid black;
     }
-    #collections .collection .collection-title > div {
+    .home .preview-block .resource .dcterms-title > div {
         background-color: black;
         padding: 12px 12px 10px 12px;
         height: 85px;
     }
-    #collections .collection .collection-title span {
+    .home .preview-block .resource .dcterms-title span {
         display: block;
         height: 100%;
         overflow: hidden;
@@ -615,52 +619,52 @@
         font-size: 13px;
         font-weight: bold;
     }
-    #collections .collection:nth-child(8n+1) .collection-title > div {
+    .home .preview-block .resource:nth-child(8n+1) .dcterms-title > div {
         background-color: rgb(67, 134, 226);
     }
-    #collections .collection:nth-child(8n+1) .collection-title::after {
+    .home .preview-block .resource:nth-child(8n+1) .dcterms-title::after {
         border-top-color: rgb(67, 134, 226);
     }
-    #collections .collection:nth-child(8n+2) .collection-title > div {
+    .home .preview-block .resource:nth-child(8n+2) .dcterms-title > div {
         background-color: rgb(229, 73, 17);
     }
-    #collections .collection:nth-child(8n+2) .collection-title::after {
+    .home .preview-block .resource:nth-child(8n+2) .dcterms-title::after {
         border-top-color: rgb(229, 73, 17);
     }
-    #collections .collection:nth-child(8n+3) .collection-title > div {
+    .home .preview-block .resource:nth-child(8n+3) .dcterms-title > div {
         background-color: rgb(104, 125, 154);
     }
-    #collections .collection:nth-child(8n+3) .collection-title::after {
+    .home .preview-block .resource:nth-child(8n+3) .dcterms-title::after {
         border-top-color: rgb(104, 125, 154);
     }
-    #collections .collection:nth-child(8n+4) .collection-title > div {
+    .home .preview-block .resource:nth-child(8n+4) .dcterms-title > div {
         background-color: rgb(224, 27, 42);
     }
-    #collections .collection:nth-child(8n+4) .collection-title::after {
+    .home .preview-block .resource:nth-child(8n+4) .dcterms-title::after {
         border-top-color: rgb(224, 27, 42);
     }
-    #collections .collection:nth-child(8n+5) .collection-title > div {
+    .home .preview-block .resource:nth-child(8n+5) .dcterms-title > div {
         background-color: rgb(62, 55, 133);
     }
-    #collections .collection:nth-child(8n+5) .collection-title::after {
+    .home .preview-block .resource:nth-child(8n+5) .dcterms-title::after {
         border-top-color: rgb(62, 55, 133);
     }
-    #collections .collection:nth-child(8n+6) .collection-title > div {
+    .home .preview-block .resource:nth-child(8n+6) .dcterms-title > div {
         background-color: rgb(255, 215, 0);
     }
-    #collections .collection:nth-child(8n+6) .collection-title::after {
+    .home .preview-block .resource:nth-child(8n+6) .dcterms-title::after {
         border-top-color: rgb(255, 215, 0);
     }
-    #collections .collection:nth-child(8n+7) .collection-title > div {
+    .home .preview-block .resource:nth-child(8n+7) .dcterms-title > div {
         background-color: rgb(135, 196, 37);
     }
-    #collections .collection:nth-child(8n+7) .collection-title::after {
+    .home .preview-block .resource:nth-child(8n+7) .dcterms-title::after {
         border-top-color: rgb(135, 196, 37);
     }
-    #collections .collection:nth-child(8n+8) .collection-title > div {
+    .home .preview-block .resource:nth-child(8n+8) .dcterms-title > div {
         background-color: rgb(208, 225, 248);
     }
-    #collections .collection:nth-child(8n+8) .collection-title::after {
+    .home .preview-block .resource:nth-child(8n+8) .dcterms-title::after {
         border-top-color: rgb(208, 225, 248);
     }
 
@@ -1129,6 +1133,19 @@
         padding-left: 150px;
         padding-right: 150px;
     }
+    .home .preview-block .resource .dcterms-title::after {
+        border-right: 132px solid transparent;
+    }
+}
+@media screen and (max-width: 944px) {
+    .home .preview-block .resource .dcterms-title::after {
+        border-right: 120px solid transparent;
+    }
+}
+@media screen and (max-width: 880px) {
+    .home .preview-block .resource .dcterms-title::after {
+        border-right: 100px solid transparent;
+    }
 }
 @media screen and (max-width: 768px) {
     body {
@@ -1148,6 +1165,14 @@
     #psl-search-form #psl-search-form-text {
         padding-left: 20px;
         padding-right: 20px;
+    }
+    .home .preview-block .resource .dcterms-title::after {
+        border-right: 80px solid transparent;
+    }
+}
+@media screen and (max-width: 600px) {
+    .home .preview-block .resource .dcterms-title::after {
+        border-right: 60px solid transparent;
     }
 }
 

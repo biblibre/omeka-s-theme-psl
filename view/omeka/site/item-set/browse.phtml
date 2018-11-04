@@ -12,8 +12,9 @@ $escape = $this->plugin('escapeHtml');
     <?php $this->trigger('view.browse.before'); ?>
     <div id="collections" <?php /* class="resource-list"*/ ?>>
         <main><?php // TODO Remove <main> from here. ?>
-        <?php echo $this->partial('psl/item-sets', [
-            'itemSets' => $itemSets,
+        <?php echo $this->partial('omeka/site/resource/list', [
+            'resourceType' => 'item_sets',
+            'resources' => $itemSets,
         ]); ?>
         </main>
     </div>

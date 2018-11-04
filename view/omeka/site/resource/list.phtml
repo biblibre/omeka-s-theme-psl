@@ -1,0 +1,37 @@
+<?php
+/**
+ * @var \Zend\View\Renderer\PhpRenderer $this
+ * @var string $resourceType
+ * @var \Omeka\Api\Representation\AbstractResourceEntityRepresentation[] $resources
+ */
+
+$translate = $this->plugin('translate');
+?>
+<?php if (empty($resources)): ?>
+<p><?php echo sprintf($translate('There is no %s for this site.'), str_replace(['item_sets', 'items'], ['item set', 'item'], $resourceType)); ?></p>
+<?php else:
+    $searchMainPage = in_array($resourceType, ['items', 'item_sets']) && $this->siteSetting('search_main_page');
+    $resourceTypes = ['item-set' => 'item_sets', 'item' => 'items', 'media' => 'media'];
+    $siteSlug = $this->params()->fromRoute('site-slug');
+    foreach ($resources as $resource):
+         // The alternative title is used in place of the full title.
+        $resourceTitle = $resource->value('dcterms:alternative', ['type' => 'literal']) ?: $resource->displayTitle();
+        $url = $searchMainPage
+            ? $this->url('search-page-' . $searchMainPage, ['site-slug' => $siteSlug], ['query' => ['resource' => ['ids' => [$resource->id()]]]], true)
+            : $resource->url();
+        $media = $resource->primaryMedia();
+    ?>
+    <div class="resource <?php echo $resourceTypes[$resourceType]; ?>">
+        <a <?php if ($media): ?>style="background-image: url(<?php echo $media->thumbnailUrl('large'); ?>)"<?php endif; ?> href="<?php echo $url; ?>">
+            <div class="dcterms-title">
+                <div>
+                    <span><?php echo $resourceTitle; ?></span>
+                </div>
+            </div>
+            <?php /* if ($description = $resource->displayDescription()): ?>
+            <div class="description"><?php echo $description; ?></div>
+            <?php endif; */ ?>
+        </a>
+    </div>
+<?php endforeach; ?>
+<?php endif; ?>
