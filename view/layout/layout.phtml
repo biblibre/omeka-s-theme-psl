@@ -18,7 +18,7 @@ $this->headLink()->appendStylesheet($this->assetUrl('css/style.css'));
 $this->headScript()->prependFile($this->assetUrl('js/global.js', 'Omeka'));
 $this->headScript()->prependFile($this->assetUrl('vendor/jquery/jquery.min.js', 'Omeka'));
 $this->headScript()->appendFile($this->assetUrl('js/custom.js'));
-$userBar = $this->partial('common/user-bar', ['site' => $site]);
+$userBar = $this->userBar();
 
 ?>
 <?php echo $this->doctype(); ?>
