@@ -8,10 +8,42 @@
  * @var array $query
  */
 
+// Copy of view/omeka/site/index/index.phtml, but adapted to allow multiple blocks.
+
+$translate = $this->plugin('translate');
+
+// Avoid to set multiple front images in case of multiple Browse preview".
+global $firstBlockForHome;
+if (!$firstBlockForHome):
+$firstBlockForHome = true;
+
+// The search form needs to be wrapped on home page, so quick set a variable to
+// check it in layout. This is simpler than a check of the home page url or route.
+$this->getHelperPluginManager()->get('view_model')->getRoot()->setVariable('isHomePage', true);
+$this->htmlElement('body')->appendAttribute('class', 'home');
+
+$frontPageImages = [];
+for ($i = 1; $i < 11; $i++) {
+    $frontPageImage = $this->themeSettingAssetUrl("front_page_image_$i");
+    if ($frontPageImage) {
+        $frontPageImages[] = $frontPageImage;
+    }
+}
+
+if (count($frontPageImages)) {
+    $index = rand(0, count($frontPageImages) - 1);
+    $url = $frontPageImages[$index];
+    $this->headStyle()->appendStyle('
+        #search-form-wrapper {
+            background-image: url("' . $url . '");
+        }
+    ');
+}
+
+endif;
 
 if (count($resources)):
 
-$translate = $this->plugin('translate');
 ?>
 <div class="preview-block">
     <header>
