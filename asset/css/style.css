@@ -928,6 +928,7 @@
         float: right;
         /* width: 46%; */
         width: 50%;
+        min-height: 600px;
     }
     .resource-metadata-wrapper::after {
         content: '';
