@@ -1,6 +1,13 @@
 <?php
+/**
+ * @var \Zend\View\Renderer\PhpRenderer $this
+ * @var \Omeka\Api\Representation\ItemRepresentation[] $items
+ * @var \Omeka\Api\Representation\ItemRepresentation[] $resources
+ * @var \Omeka\Api\Representation\ItemSetRepresentation $itemSet
+ * @var \Omeka\Api\Representation\SiteRepresentation $site
+ */
+
 $translate = $this->plugin('translate');
-$escape = $this->plugin('escapeHtml');
 $this->htmlElement('body')->appendAttribute('class', 'item resource browse');
 $query = $this->params()->fromQuery();
 if (isset($itemSet)):

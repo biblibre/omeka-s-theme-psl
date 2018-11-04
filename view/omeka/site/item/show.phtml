@@ -1,6 +1,13 @@
 <?php
-$translate = $this->plugin('translate');
-$escape = $this->plugin('escapeHtml');
+/**
+ * @var \Zend\View\Renderer\PhpRenderer $this
+ * @var \Omeka\Api\Representation\ItemRepresentation $item
+ * @var \Omeka\Api\Representation\ItemRepresentation $resource
+ * @var \Omeka\Api\Representation\SiteRepresentation $site
+ */
+
+$escapeAttr = $this->plugin('escapeHtmlAttr');
+
 $this->htmlElement('body')->appendAttribute('class', 'item resource show');
 $itemMedia = $item->media();
 // UniversalViewer can't display html, so when there is an html media, use
@@ -33,6 +40,7 @@ endforeach;
         <?php endif; ?>
     </div>
     <?php endif; ?>
+
     <div class="resource-metadata-wrapper">
         <div class="resource-metadata">
             <?php echo $item->displayValues(['viewName' => 'psl/resource-values']); ?>
@@ -43,7 +51,7 @@ endforeach;
         <div class="media-list">
             <?php foreach ($itemMedia as $media): ?>
                 <a href="<?php echo $media->url(); ?>" class="media resource">
-                    <img src="<?php echo $escape($media->thumbnailUrl('square')); ?>" title="<?php echo $escape($media->displayTitle()); ?>">
+                    <img src="<?php echo $escapeAttr($media->thumbnailUrl('square')); ?>" title="<?php echo $escapeAttr($media->displayTitle()); ?>">
                 </a>
             <?php endforeach; ?>
         </div>
