@@ -1,3 +1,7 @@
+// TODO Manage translation for texts in theme.
+// var translateAccessToFiles = 'Access to files';
+var translateAccessToFiles = 'Accès aux fichiers';
+
 /* ==== Psl search form ==== */
 $(document).ready(function() {
     $('#psl-toolbox li').on('mouseenter', function() {
