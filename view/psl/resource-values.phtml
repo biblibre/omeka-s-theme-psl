@@ -6,6 +6,7 @@
 
 $escape = $this->plugin('escapeHtml');
 $labelInfo = $this->setting('property_label_information');
+$ark = $this->getHelperPluginManager()->has('ark') ? $this->plugin('ark') : false;
 ?>
 <?php foreach ($values as $term => $propertyData): ?>
     <div class="property">
@@ -24,33 +25,28 @@ $labelInfo = $this->setting('property_label_information');
         <div class="values">
             <?php foreach ($propertyData['values'] as $value): ?>
                 <?php
-                $class = 'value';
+                $class = ['value'];
                 if ('resource' == $value->type()) {
-                    $valueResource = $value->valueResource();
-                    $class .= ' ' . $escape($valueResource->resourceName());
+                    $class[] = 'resource';
+                    $class[] = $escape($value->valueResource()->resourceName());
                 } elseif ('uri' == $value->type()) {
-                    $class .= ' uri';
+                    $class[] = 'uri';
+                }
+                if (method_exists($value, 'isPublic') && !$value->isPublic()) {
+                    $class[] = 'private';
                 }
                 ?>
-                <div class="<?php echo $class; ?>">
-                    <?php if ('resource' == $value->type() && $thumbnail = $valueResource->primaryMedia()): ?>
-                        <img
-                            src="<?php echo $escape($thumbnail->thumbnailUrl('square')); ?>"
-                            title="<?php echo $escape($thumbnail->displayTitle()); ?>"
-                            alt="<?php echo $escape($thumbnail->mediaType()); ?> thumbnail"
-                        >
-                    <?php endif; ?>
+                <div class="<?php echo implode(' ', $class); ?>" lang="<?php echo $escape($value->lang()); ?>">
                     <?php if ($language = $value->lang()): ?>
                     <span class="language"><?php echo $language; ?></span>
                     <?php endif; ?>
                     <?php
-                    $term = $propertyData['property']->term();
-                    if ($term == 'dcterms:identifier' && 0 === strpos($value, 'ark:/')) {
-                        $url = $this->ark()->getAbsoluteUrl($value->resource());
+                    if ($ark && $term === 'dcterms:identifier' && strpos($value, 'ark:/') === 0):
+                        $url = $ark()->getAbsoluteUrl($value->resource());
                         echo $this->hyperlink($value, $url);
-                    } else {
+                    else:
                         echo $value->asHtml();
-                    }
+                    endif;
                     ?>
                 </div>
             <?php endforeach; ?>
