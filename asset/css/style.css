@@ -10,7 +10,7 @@
         background-color: white;
         font-family: "Open Sans", sans-serif;
         margin: auto;
-        max-width: 1200px;
+        max-width: 1240px;
         word-wrap: break-word;
         display: flex;
         flex-direction: column;
@@ -63,9 +63,7 @@
         background-image: url('../img/pin-full.svg');
     }
     .user-links > * {
-        color: black;
-        border: 1px solid grey;
-        padding: 10px;
+        font-size: 1px;
     }
     a.show_basket::before {
         content: '';
@@ -157,13 +155,15 @@
     body > header {
         display: flex;
         justify-content: space-between;
-        align-items: center;
+        align-items: right;
         flex-wrap: wrap;
         border-bottom: 1px solid rgb(166, 180, 198);
+		padding-bottom: 10px;
     }
     body > header .inside > * {
         display: inline-block;
-        margin: 10px;
+		margin-top: 10px;
+		margin-bottom: 10px;
     }
     body > header .main-menu-small {
         display: none;
@@ -182,9 +182,10 @@
     body > header nav > ul {
         margin: 0;
         padding: 0;
-        display: flex;
+        display: inline-block;
         flex-wrap: wrap;
         justify-content: flex-end;
+		text-align: center;
     }
     body > header nav > ul > li {
         display: inline-block;
@@ -231,7 +232,17 @@
         display: block;
         padding: 7px 7px;
     }
-    nav.breadcrumbs {
+    div.inside {
+        display: inline-block;
+		box-sizing: border-box;
+		width: 100%;
+		margin: 30px 1px 30px 1px;
+		text-align: center;
+	}
+	div.user-links {
+        text-align: end;
+    }
+	nav.breadcrumbs {
         margin-top: 0.5em;
         margin-bottom: 1em;
     }
@@ -239,11 +250,14 @@
     /* Footer */
 
     body > footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        text-align: center;
-        margin-top: 2em;
+    display: flex;
+	justify-content: space-between;
+	align-items: center;
+	text-align: center;
+	margin-top: 7em;
+	border-top: solid 1px lightgray;
+	padding-top: 2em;
+	padding-bottom: 2em;
     }
     body > footer ul.menu {
         margin: 0;
