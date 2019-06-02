@@ -1,6 +1,6 @@
 {
   "name": "psl",
-  "version": "0.2",
+  "version": "1.3.0",
   "description": "PSL theme for Omeka S",
   "main": "gulpfile.js",
   "scripts": {
@@ -8,23 +8,27 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/biblibre/omeka-s-theme-psl.git"
+    "url": "git+https://github.com/Daniel-KM/Omeka-S-theme-psl.git"
   },
   "keywords": [
     "omeka-s",
     "theme"
   ],
-  "author": "Biblibre",
+  "author": "BibLibre, improved by Daniel Berthereau",
   "license": "CECILL-2.1",
   "bugs": {
     "url": "https://github.com/biblibre/omeka-s-theme-psl/issues"
   },
-  "homepage": "https://github.com/biblibre/omeka-s-theme-psl#readme",
+  "homepage": "https://github.com/Daniel-KM/Omeka-S-theme-psl#readme",
   "devDependencies": {
-    "autoprefixer": "^6.4.0",
-    "gulp": "^3.9.1",
-    "gulp-postcss": "^6.1.1",
-    "gulp-sass": "^2.3.2",
-    "susy": "^2.2.12"
-  }
+    "autoprefixer": "^9.6.0",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^8.0.0",
+    "gulp-sass": "^4.0.2",
+    "susy": "^3.0.5"
+  },
+  "browserslist": [
+    "> 5%",
+    "> 1% in US"
+  ]
 }
