@@ -1,5 +1,17 @@
 <?php
+/**
+ * @var \Zend\View\Renderer\PhpRenderer $this
+ * @var array $query
+ * @var int $totalCount
+ * @var int $currentPage
+ * @var int $pageCount
+ * @var string $previousPageUrl
+ * @var string $nextPageUrl
+ */
+
 $translate = $this->plugin('translate');
+$escape = $this->plugin('escapeHtml');
+$assetUrl = $this->plugin('assetUrl');
 ?>
 <nav class="pagination" role="navigation">
 <?php if ($totalCount): ?>
@@ -24,36 +36,36 @@ $translate = $this->plugin('translate');
 
     <?php if ($currentPage > 1): ?>
         <span class="page previous">
-            <a href="<?php echo $this->escapeHtml($previousPageUrl); ?>" title="<?php $translate('Previous'); ?>">
-                <img src="<?php echo $this->assetUrl('img/previous.svg'); ?>"/>
+            <a href="<?= $escape($previousPageUrl) ?>" title="<?= $translate('Previous') ?>">
+                <img src="<?= $assetUrl('img/previous.svg') ?>"/>
             </a>
         </span>
     <?php endif; ?>
 
     <?php foreach ($pages as $page): ?>
         <?php $q = array_merge($query, ['page' => $page]); ?>
-        <span class="page <?php echo $page == $currentPage ? 'active' : ''; ?>">
+        <span class="page <?= $page == $currentPage ? 'active' : '' ?>">
             <?php if ($page != $currentPage): ?>
-                <a href="<?php echo $this->escapeHtml($this->url(null, [], ['query' => $q], true)); ?>"><?php echo $page; ?></a>
+                <a href="<?= $escape($this->url(null, [], ['query' => $q], true)) ?>"><?= $page ?></a>
             <?php else: ?>
-                <span><?php echo $page; ?></span>
+                <span><?= $page ?></span>
             <?php endif; ?>
         </span>
     <?php endforeach; ?>
 
     <?php if ($currentPage < $pageCount): ?>
         <span class="page next">
-            <a href="<?php echo $this->escapeHtml($nextPageUrl); ?>" title="<?php $translate('Next'); ?>">
-                <img src="<?php echo $this->assetUrl('img/next.svg'); ?>"/>
+            <a href="<?= $escape($nextPageUrl) ?>" title="<?= $translate('Next') ?>">
+                <img src="<?= $assetUrl('img/next.svg') ?>"/>
             </a>
         </span>
     <?php endif; ?>
     <?php /* ?>
     <div>
-        <span class="row-count"><?php echo sprintf($translate('[Total: %s]'), $totalCount); ?></span>
+        <span class="row-count"><?= sprintf($translate('[Total: %s]'), $totalCount) ?></span>
     </div>
     <?php */ ?>
 <?php else: ?>
-    <?php echo $translate('No resources.'); ?>
+    <?= $translate('No resources.') ?>
 <?php endif; ?>
 </nav>
