@@ -20,6 +20,7 @@ $assetUrl = $this->plugin('assetUrl');
                     'direction' => $direction,
                     'name' => $name,
                     'active' => ($query->getSort() === $name),
+                    'label' => $label,
                 ];
                 $labels[$field] = $translate($label);
             endforeach;
