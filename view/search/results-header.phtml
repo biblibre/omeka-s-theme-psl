@@ -7,6 +7,7 @@
  */
 
 $translate = $this->plugin('translate');
+$assetUrl = $this->plugin('assetUrl');
 ?>
 <div class="search-results-header">
     <div class="search-results-sort">
@@ -29,8 +30,8 @@ $translate = $this->plugin('translate');
                 <span class="sort-label"><?php echo $labels[$field]; ?></span>
                 <div class="sort-directions">
                 <?php foreach ($link as $lk): ?>
-                    <div class="sort-direction sort-<?php echo $lk['direction']; if ($lk['active']): ?> sort-active<?php endif; ?>" data-name="<?php echo $lk['name']; ?>">
-                        <img src="<?php echo $this->assetUrl('img/sort-' . $lk['direction'] . '.svg'); ?>" />
+                    <div class="sort-direction sort-<?= $lk['direction']; if ($lk['active']): ?> sort-active<?php endif; ?>" data-sort-by="<?= $field ?>" data-sort-order="<?= $lk['direction'] ?>" data-name="<?= $lk['name'] ?>">
+                        <img src="<?php echo $assetUrl('img/sort-' . $lk['direction'] . '.svg'); ?>" alt="<?= $label ?> sort direction <?php echo $lk['direction']; ?>" />
                     </div>
                 <?php endforeach; ?>
                 </div>
@@ -38,7 +39,7 @@ $translate = $this->plugin('translate');
         <?php endforeach; ?>
     </div>
     <div>
-        <a class="search-view-type search-view-type-grid" href="#"><img src="<?php echo $this->assetUrl('img/grid.svg'); ?>"/></a>
-        <a class="search-view-type search-view-type-list" href="#"><img src="<?php echo $this->assetUrl('img/list.svg'); ?>"/></a>
+        <a class="search-view-type search-view-type-grid" href="#"><img src="<?php echo $assetUrl('img/grid.svg'); ?>" alt="<?php echo $translate('Display as grid ') ?>">/></a>
+        <a class="search-view-type search-view-type-list" href="#"><img src="<?php echo $assetUrl('img/list.svg'); ?>" alt="<?php echo $translate('Display in list ') ?>"/></a>
     </div>
 </div>
