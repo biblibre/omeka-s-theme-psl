@@ -8,31 +8,34 @@
 
 $translate = $this->plugin('translate');
 $assetUrl = $this->plugin('assetUrl');
+
+// Note: urls are managed by js.
+// TODO Use $this->sortLink()?
+
+$links = [];
+$labels = [];
+foreach ($sortOptions as $name => $label):
+    @list($field, $direction) = explode(' ', $name, 2);
+    $links[$field][] = [
+        'direction' => $direction,
+        'name' => $name,
+        'active' => ($query->getSort() === $name),
+        'label' => $label,
+    ];
+    $labels[$field] = $translate($label);
+endforeach;
 ?>
+
 <div class="search-results-header">
     <div class="search-results-sort">
-        <?php
-            $links = [];
-            $labels = [];
-            foreach ($sortOptions as $name => $label):
-                @list($field, $direction) = explode(' ', $name, 2);
-                $links[$field][] = [
-                    'direction' => $direction,
-                    'name' => $name,
-                    'active' => ($query->getSort() === $name),
-                    'label' => $label,
-                ];
-                $labels[$field] = $translate($label);
-            endforeach;
-        ?>
-        <span><?php echo $translate('Sort by'); ?></span>
+        <span><?= $translate('Sort by') ?></span>
         <?php foreach($links as $field => $link): ?>
             <div class="sort-field">
-                <span class="sort-label"><?php echo $labels[$field]; ?></span>
+                <span class="sort-label"><?= $labels[$field] ?></span>
                 <div class="sort-directions">
                 <?php foreach ($link as $lk): ?>
                     <div class="sort-direction sort-<?= $lk['direction']; if ($lk['active']): ?> sort-active<?php endif; ?>" data-sort-by="<?= $field ?>" data-sort-order="<?= $lk['direction'] ?>" data-name="<?= $lk['name'] ?>">
-                        <img src="<?php echo $assetUrl('img/sort-' . $lk['direction'] . '.svg'); ?>" alt="<?= $label ?> sort direction <?php echo $lk['direction']; ?>" />
+                        <img src="<?= $assetUrl('img/sort-' . $lk['direction'] . '.svg'); ?>" alt="<?= $label ?> sort direction <?= $lk['direction']; ?>" />
                     </div>
                 <?php endforeach; ?>
                 </div>
@@ -40,7 +43,7 @@ $assetUrl = $this->plugin('assetUrl');
         <?php endforeach; ?>
     </div>
     <div>
-        <a class="search-view-type search-view-type-grid" href="#"><img src="<?php echo $assetUrl('img/grid.svg'); ?>" alt="<?php echo $translate('Display as grid ') ?>">/></a>
-        <a class="search-view-type search-view-type-list" href="#"><img src="<?php echo $assetUrl('img/list.svg'); ?>" alt="<?php echo $translate('Display in list ') ?>"/></a>
+        <a class="search-view-type search-view-type-grid" href="#"><img src="<?php echo $assetUrl('img/grid.svg'); ?>" alt="<?= $translate('Display as grid') ?>"/></a>
+        <a class="search-view-type search-view-type-list" href="#"><img src="<?php echo $assetUrl('img/list.svg'); ?>" alt="<?= $translate('Display in list') ?>"/></a>
     </div>
 </div>
