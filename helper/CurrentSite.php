@@ -1,5 +1,5 @@
 <?php
-namespace Omeka\View\Helper;
+namespace OmekaTheme\Helper;
 
 use Zend\View\Helper\AbstractHelper;
 
