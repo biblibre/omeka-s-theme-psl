@@ -22,25 +22,7 @@ $firstBlockForHome = true;
 $this->getHelperPluginManager()->get('view_model')->getRoot()->setVariable('isHomePage', true);
 $this->htmlElement('body')->appendAttribute('class', 'home');
 
-$frontPageImages = [];
-for ($i = 1; $i < 11; $i++) {
-    $frontPageImage = $this->themeSettingAssetUrl("front_page_image_$i");
-    if ($frontPageImage) {
-        $frontPageImages[] = $frontPageImage;
-    }
-}
-
-if (count($frontPageImages)) {
-    $index = rand(0, count($frontPageImages) - 1);
-    $url = $frontPageImages[$index];
-    $this->headStyle()->appendStyle('
-        #search-form-wrapper {
-            background-image: url("' . $url . '");
-        }
-    ');
-}
-
-endif;
+$this->FrontPageImage('#search-form-wrapper');
 
 if (count($resources)):
 
