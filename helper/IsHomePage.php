@@ -24,6 +24,18 @@ class IsHomePage extends AbstractHelper
             return true;
         }
 
+        // Since 1.4, there is a site setting for home page.
+        if (version_compare(\Omeka\Module::VERSION, '1.4.0', '>=')) {
+            $homepage = $site->homepage();
+            if ($homepage) {
+                $params = $view->params()->fromRoute();
+                return $params['__CONTROLLER__'] === 'Page'
+                    && $homepage->id() === $view->api()
+                        ->read('site_pages', ['site' => $site->id(), 'slug' => $params['page-slug']])
+                        ->getContent()->id();
+            }
+        }
+
         // Check the first normal pages.
         $linkedPages = $site->linkedPages();
         if ($linkedPages) {
@@ -87,6 +99,9 @@ class IsHomePage extends AbstractHelper
              : $this->getView()->url(null, [], true);
     }
 
+    /**
+     * @return \Omeka\Api\Representation\SiteRepresentation
+     */
     protected function currentSite()
     {
         return $this->getView()
